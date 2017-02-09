@@ -32,11 +32,15 @@ urlpatterns = [
 		views.Team.as_view(),
 		name="team"),
 
-	url(r'^(?P<pk>\d+)/extra/$',
-		views.Extra.as_view(),
-		name="extra"),
-
 	url(r'^chat/$',
 		views.Chating.as_view(),
 		name="chat"),
+
+	url(r'^(?P<pk>/d+)/acciones/$',
+		views.Acciones.as_view(),
+		name="acciones"),
+
+	url(r'^(?P<pk>\d+)/extra/$',
+		views.Extra.as_view(),
+		name="extra"),
 ]

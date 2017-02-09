@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'funds',
     'taggit',
     'cart',
+    'muro',
+    'actions',
 ]
 
 MIDDLEWARE = [

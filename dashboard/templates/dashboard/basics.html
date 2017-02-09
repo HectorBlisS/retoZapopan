@@ -4,115 +4,16 @@
 {%block content%}
 {%count_projects as nums %}
 
-
 <section class="contendor centrado">
 
 	<h3 class="demo-panel-title">{{project}} / {{section}}</h3>
 
 	<article class="row">
 
-		<div class="col-md-3 col-md-offset-1">
-			<div class="todo">
-			
-			<ul>
-
-				<a class="no-link" href="{%url 'dash:detail' project.pk%}">
-				<li>
-					
-					<div class="todo-icon fui-resize"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Dashboard</strong>
-						</h4>
-						¿Cómo va tu proyecto?
-					</div>
-					
-				</li>
-				</a>
-
-				<a class="no-link" href="{%url 'dash:detail' project.pk%}">
-				<li class="todo-done">
-					
-					<div class="todo-icon fui-eye"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Info Basica</strong>
-						</h4>
-						Empezamos por aquí
-					</div>
-					
-				</li>
-				</a>
-
-				<a class="no-link" href="{%url 'dash:history' project.pk%}">
-				<li>
-					
-					<div class="todo-icon fui-image"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Descripción</strong>
-						</h4>
-						Cuentanos tu historia
-					</div>
-					
-				</li>
-				</a>
-
-				<li>
-					<div class="todo-icon fui-plus-circle"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Extras</strong>
-						</h4>
-						Tu equipo y más detalles
-					</div>
-				</li>
-
-				<a class="no-link" href="{%url 'dash:rewards' project.pk%}">
-				<li>
-					<div class="todo-icon fui-heart"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Recompensas</strong>
-						</h4>
-						¡Motiva a tu audiencia!
-					</div>
-				</li>
-				</a>
-
-				<li>
-					<div class="todo-icon fui-upload"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Documentos</strong>
-						</h4>
-						Sube tus documentos
-					</div>
-				</li>
-
-				<a class="no-link" href="{%url 'dash:chat'%}">
-				<li>
-					<div class="todo-icon fui-bubble"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Mensajes</strong>
-						</h4>
-						Comunicate con tus patrocinadores
-					</div>
-				</li>
-				</a>
-
-			</ul>
-		</div>
-		</div>
-
-
-
-
-		
+{%include 'dashboard/saul.html'%}
 
 		<div class="col-md-6 col-md-offset-1">
-				
+
 
 				<form id="nuevo" class="row panel panel-default" action="." method="post">
 				{%csrf_token%}
@@ -139,7 +40,7 @@
 					<h4 class="col-md-12">
 						¿En que categoría encaja?
 					</h4>
-						
+
 						<select name="tags" class="form-control select select-danger select-block mbl">
 						  <optgroup label="Categorias">
 						  	{%for c in cats%}
@@ -160,7 +61,7 @@
 			</form>
 
 
-		
+
 
 		</div>
 	</article>
@@ -176,9 +77,3 @@
 </script>
 
 {%endblock content%}
-
-
-
-
-
-
