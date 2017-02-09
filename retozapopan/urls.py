@@ -12,6 +12,9 @@ from cart import urls as cartURLs
 from django.views.static import serve
 from django.conf import settings
 
+# muro
+from muro import urls as muroUrls
+
 
 urlpatterns = [
 
@@ -32,6 +35,9 @@ urlpatterns = [
 
     url(r'^cart/',
         include(cartURLs, namespace="cart")),
+
+    url(r'^muro/',
+        include(muroUrls, namespace="muro")),
 
     #Django Admin
     url(r'^admin/', admin.site.urls),
