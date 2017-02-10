@@ -1,3 +1,33 @@
+.portada{
+	background-image:url('/static/images/crowd.jpg');
+	background-size: cover;
+	width: 100%;
+	height: 300px;
+	position: relative;
+}
+#avatar{
+	position: absolute;
+	left: 100px;
+	bottom: -30px;
+	z-index: 9999999;
+}
+#name{
+	position: absolute;
+	left: 300px;
+	bottom: -10px;
+}
+
+.espacio-left{
+	padding-left: 300px;
+}
+.mini{
+	font-size:1rem;padding-left:90px;
+	position: absolute;
+	top:60px;
+	left: 10px;
+
+}
+
 img.redonda{
 	border-radius: 50%;
 }
