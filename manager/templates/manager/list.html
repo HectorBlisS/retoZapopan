@@ -1,83 +1,122 @@
-
 {%extends 'base.html'%}
 {%block content%}
+
 <style type="text/css">
-	.mtable{
+	.manager{
 		padding: 1%;
-		width: 70%;
+		margin: 0;
+	}
+	.manager table{
+		width:100%;
 		text-align: center;
 	}
-	.mtable th, td{
-		padding: 1%;
+	.manager th{
 		text-align: center;
 	}
-	.is10{
-		width: 10%;
+	.manager hr{
+		border: #2f4154 solid;
 	}
-	.is20{
-		width: 20%;
+	.manager .btn{
+		margin:2px;
 	}
-	.is30{
-		width: 30%;
+	.mbtn{
+		color:#eff0f2;
+		background-color: #2f4154;
 	}
-	.mtable table{
-		width: 100%;
+	.filter span{
+		padding-left: 2%;		
 	}
-	.manager article{
-		display: flex;
+	.mia{
+		color:yellow;
+		font-size: 50px;
 	}
-	.manager .filter{
-		width: 30%;
-		display: flex;
-		padding: 1%;
+	.btn:active{
+		color:#48c9b0;
+		font-size: 20px;
 	}
-	.manager .tabla{
-		display: flex;
+	.mactive{
+		color:#48c9b0;
+		font-size: 20px;
+	}
+	.v{
+		color: #2ECC71;
+	}
+
+	.r{
+		color: #E74C3C;
+	}
+	.a{
+		color: #F1C40F;
 	}
 </style>
 
-<section class="manager">
-	<article>
-		<div class="tabla">
-			<div class="mtable">
-				<div class="input-group">
-				<input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
-				<span class="input-group-btn">
-					<button type="submit" class="btn"><span class="fui-search"></span></button>
-				</span>
-			</div>
-				<table>
-						<thead><h3>Proyectos</h3></thead>
+	<section class="manager">
+		<div class="row demo-tiles">
+			<div class="col-lg-8">
+				<div>
+					<div class="input-group">
+						<input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+						<span class="input-group-btn">
+							<button type="submit" class="btn"><span class="fui-search"></span></button>
+						</span>
+					</div>
+					<table>
+						<thead><h3 align="center">Todos los Proyectos</h3></thead>
 						<tbody>
 							<tr>
-								<th class="is10">ID</th>
-								<th class="is20">Nombre</th>
-								<th class="is30">Usuario</th>
-								<th class="is20">Meta</th>
-								<th class="is20">Detalles</th>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Usuario</th>
+								<th>Meta</th>
+								<th>Categoría</th>
+								<th>Status</th>
+								<th>Detalles</th>
 							</tr>
-				{%for p in projects%}
+							{%for p in projects%}
 					
 							<tr>
 								<td>{{p.id}}</td>
 								<td>{{p.name}}</td>
 								<td>{{p.user}}</td>
-								<td>${{p.goal}}--{{p.tags.all|join:", "}}</td>
-								<td><a href="/manager/{{p.id}}">Editar</a></td>
+								<td>${{p.goal}}</td>
+								<td class="mactive">{{p.tags.all|join:", "}}</td>
+								<!--STATUS-->
+								{%if p.status == "APROBADO"%}<td> <i class="fa fa-check-circle v" aria-hidden="true"></i> </td>{%endif%}
+								{%if p.status == "RECHAZADO"%}<td> <i class="fa fa-times-circle r" aria-hidden="true"></i> </td>{%endif%}
+								{%if p.status == "EN REVISIÓN"%}<td> <i class="fa fa-exclamation-circle a" aria-hidden="true"></i> </td>{%endif%}
+								<!--STATUS-->
+								<td><a class="btn btn-primary" href="{%url 'manager:detail' p.id%}">Editar</a></td>
 							</tr>
-				{%endfor%}
+							{%endfor%}
 						</tbody>
 					</table>
-		</div>
-		<div class="filter">
-			<h4>Categorias:</h4>
-			<div class="thumbnail">
-				<p>yep</p>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				
+				<div class="tile filter">
+					<h2>Categorias:</h2>
+					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'tecnologia'%}"><i class="fa fa-cogs" aria-hidden="true"></i><span>Tecnología</span></a></h4>
 
+					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'comunidad'%}"><i class="fa fa-users" aria-hidden="true"></i><span>Comunidad</span></a></h4>
+
+					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'medio-ambiente'%}"> <i class="fa fa-pagelines" aria-hidden="true"></i><span>Medio Ambiente</span></a></h4>
+
+					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'arte'%}"><i class="fa fa-paint-brush" aria-hidden="true"></i><span>Arte</span></a></h4>
+
+					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'diseno'%}"><i class="fa fa-ravelry" aria-hidden="true"></i><span>Diseño</span></a></h4>
+
+					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'educacion'%}"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Educación</span></a></h4>
+					<hr>
+					<h4><a class="btn btn-block btn-lg mbtn" href="/manager"><i class="fa fa-tasks" aria-hidden="true"></i><span>Todos</span></a></h4>
+
+
+				</div>
 			</div>
 		</div>
+	</section>	
 
 		
-	</article>
-</section>
+	
+
 {%endblock content%}
