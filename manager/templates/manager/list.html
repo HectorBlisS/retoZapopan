@@ -1,0 +1,83 @@
+
+{%extends 'base.html'%}
+{%block content%}
+<style type="text/css">
+	.mtable{
+		padding: 1%;
+		width: 70%;
+		text-align: center;
+	}
+	.mtable th, td{
+		padding: 1%;
+		text-align: center;
+	}
+	.is10{
+		width: 10%;
+	}
+	.is20{
+		width: 20%;
+	}
+	.is30{
+		width: 30%;
+	}
+	.mtable table{
+		width: 100%;
+	}
+	.manager article{
+		display: flex;
+	}
+	.manager .filter{
+		width: 30%;
+		display: flex;
+		padding: 1%;
+	}
+	.manager .tabla{
+		display: flex;
+	}
+</style>
+
+<section class="manager">
+	<article>
+		<div class="tabla">
+			<div class="mtable">
+				<div class="input-group">
+				<input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
+				<span class="input-group-btn">
+					<button type="submit" class="btn"><span class="fui-search"></span></button>
+				</span>
+			</div>
+				<table>
+						<thead><h3>Proyectos</h3></thead>
+						<tbody>
+							<tr>
+								<th class="is10">ID</th>
+								<th class="is20">Nombre</th>
+								<th class="is30">Usuario</th>
+								<th class="is20">Meta</th>
+								<th class="is20">Detalles</th>
+							</tr>
+				{%for p in projects%}
+					
+							<tr>
+								<td>{{p.id}}</td>
+								<td>{{p.name}}</td>
+								<td>{{p.user}}</td>
+								<td>${{p.goal}}--{{p.tags.all|join:", "}}</td>
+								<td><a href="/manager/{{p.id}}">Editar</a></td>
+							</tr>
+				{%endfor%}
+						</tbody>
+					</table>
+		</div>
+		<div class="filter">
+			<h4>Categorias:</h4>
+			<div class="thumbnail">
+				<p>yep</p>
+
+			</div>
+		</div>
+
+		
+	</article>
+</section>
+{%endblock content%}
