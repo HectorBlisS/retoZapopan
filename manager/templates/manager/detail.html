@@ -1,0 +1,82 @@
+{%extends 'base.html'%}
+{%block content%}
+<style type="text/css">
+	.detailm{
+		margin:0;
+		padding: 2%;
+		width: 100%;
+	}
+	.mcard{
+		border: #eff0f2 solid;
+		border-radius: 10px;
+	}
+	.minput{
+		width: 60%;
+		height: 60px;
+		border-radius: 10px;
+		border :#eff0f2 solid;
+		background-color: #fff;
+		padding: 1%;
+		font-size: 3rem;
+	}
+</style>
+
+<section class="detailm">
+	<div class="row">
+	<div class="col-xs-5">
+		<!--<div class="row">
+			<div class="col-xs-5">
+				<h3>{{project.name}}</h3>
+			</div>
+			<div class="col-xs-7">
+				<img class="img-rounded img-responsive" src="/media/{{project.img}}">
+			</div>
+		</div>-->
+		<div class="mcard">
+			<h3 align="center">{{project.name}}</h3>
+		
+			<iframe id="vidPrev" width="100%" height="300px" src="{{project.video}}" frameborder="0" allowfullscreen=""></iframe>
+			<span>{{project.desc | safe}}</span>
+		</div>
+	</div>
+	<div class="col-xs-7">
+		<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+		<div class="row">
+			<div class="col-xs-8">
+				<h2>Datos por Revisar</h2>
+			</div>
+			<div class="col-xs-4">
+				<button class="btn btn-hg btn-primary">
+				  Guardar
+				</button>
+			</div>
+		</div>
+		<div class="tile">
+			<h4>Status Actual:{{project.status}}</h4>
+			<div class="row">
+				<select name="status" class="minput" value="{{project.status}}">
+				  	<option value="EN REVISIÓN">En revisión</option>
+				    <option value="APROBADO">Aprobado</option>
+				    <option value="RECHAZADO">Rechazado</option>
+
+				</select>
+			</div>
+			
+				
+		</div>
+		<div class="tile">
+			<h4>Cantidad a Fondear Actual:{{project.goal}}</h4>
+			<div class="row">
+				<input name="goal" class="minput" type="number" placeholder="{{project.goal}}" value="{{project.goal}}">	
+			</div>
+			
+			
+		</div>
+		</form>
+	</div>
+	
+
+
+</div>
+</section>
+{%endblock content%}

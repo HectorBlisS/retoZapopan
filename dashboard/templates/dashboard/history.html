@@ -6,7 +6,7 @@
 {%count_projects as nums %}
 
 
-<section class="contendor">
+<section class="contendor centrado">
 
 	<h3 class="demo-panel-title">{{project}} / {{section}}
 		<button id="guarda" class="btn btn-success" {%if project.publish%}disabled{%endif%}>Guardar</button>
@@ -15,110 +15,12 @@
 
 	<article class="row">
 
-		<div class="col-md-3 col-md-offset-1">
-			<div class="todo">
-			
-			<ul>
-
-				<a class="no-link" href="{%url 'dash:detail' project.pk%}">
-				<li>
-					
-					<div class="todo-icon fui-resize"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Dashboard</strong>
-						</h4>
-						¿Cómo va tu proyecto?
-					</div>
-					
-				</li>
-				</a>
-
-				<a class="no-link" href="{%url 'dash:basics' project.pk%}">
-				<li >
-					
-					<div class="todo-icon fui-eye"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Info Basica</strong>
-						</h4>
-						Empezamos por aquí
-					</div>
-					
-				</li>
-				</a>
-
-				<a class="no-link" href="{%url 'dash:history' project.pk%}">
-				<li class="todo-done">
-					
-					<div class="todo-icon fui-image"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Descripción</strong>
-						</h4>
-						Cuentanos tu historia
-					</div>
-					
-				</li>
-				</a>
-
-				<li>
-					<div class="todo-icon fui-plus-circle"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Extras</strong>
-						</h4>
-						Tu equipo y más detalles
-					</div>
-				</li>
-
-				<a class="no-link" href="{%url 'dash:rewards' project.pk%}">
-				<li>
-					<div class="todo-icon fui-heart"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Recompensas</strong>
-						</h4>
-						¡Motiva a tu audiencia!
-					</div>
-				</li>
-				</a>
-
-				<li>
-					<div class="todo-icon fui-upload"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Documentos</strong>
-						</h4>
-						Sube tus documentos
-					</div>
-				</li>
-
-				<a class="no-link" href="{%url 'dash:chat'%}">
-				<li>
-					<div class="todo-icon fui-bubble"></div>
-					<div class="todo-content">
-						<h4 class="todo-name">
-							<strong>Mensajes</strong>
-						</h4>
-						Comunicate con tus patrocinadores
-					</div>
-				</li>
-				</a>
-
-			</ul>
-		</div>
-		</div>
-
-
-
-
-		
+{%include 'dashboard/saul.html'%}
 
 		<div class="col-md-6 col-md-offset-1">
 
 			<form class="row" action="." method="post" enctype="multipart/form-data">
-				
+
 				<br>
 				{%csrf_token%}
 
@@ -146,7 +48,7 @@
 				   <span style="cursor:pointer" class="girale input-group-addon">
 				   	<i class="fa fa-refresh" aria-hidden="true"></i>
 				   </span>
-				  
+
 				</div>
 
 				</article>
@@ -158,7 +60,7 @@
 
 				<article class="panel-body">
 
-				<img class="img-responsive" id="img_preview" src="{%if project.img%}{{project.img.url}}{%else%}https://cdn4.iconfinder.com/data/icons/big-data/512/bigdata-512.png{%endif%}">				
+				<img class="img-responsive" id="img_preview" src="{%if project.img%}{{project.img.url}}{%else%}https://cdn4.iconfinder.com/data/icons/big-data/512/bigdata-512.png{%endif%}">
 
 				</article>
 
@@ -184,7 +86,7 @@
 				<p>*Puedes usar HTML y <span data-toggle="tooltip" data-placement="bottom" title="#Titulo, ##subtitulo, *parrafo">Markdown</span>*</p>
 				<textarea class="editable" rows="10" name="desc" class="form-control">{{project.desc}}</textarea>
 
-				
+
 				<!--
 				<div class="tile">
 				<h6>Presiona guardar para ver el preview:</h6>
@@ -246,7 +148,7 @@
   	console.log(link);
     $('#vidPrev').attr('src',link);
     $('#vid').val(link);
-    
+
     }
 
 
@@ -267,7 +169,7 @@ $('#vid').change(function(){
 $("#file").change(function(){
 
     readURL(this);
-    
+
 
 });
 
@@ -313,9 +215,3 @@ $(function () {
 
 
 {%endblock content%}
-
-
-
-
-
-

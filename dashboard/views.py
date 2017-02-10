@@ -12,6 +12,7 @@ from django.utils.decorators import method_decorator
 
 from taggit.models import Tag
 
+
 from actions.models import Action
 from muro.forms import PostForm
 
@@ -107,7 +108,7 @@ class Basics(View):
 			'project':p,
 			'section':'basics',
 			'cats':Tag.objects.all()
-			
+
 		}
 		return render(request, template_name,context)
 
@@ -176,13 +177,13 @@ class Rewards(View):
 		if request.POST.get('pk'):
 			r = get_object_or_404(Reward,id=request.POST.get('pk'))
 			form = NewRewardForm(data=request.POST, instance=r)
-		
+
 		if form.is_valid():
 			r = form.save(commit=False)
 			r.project = p
 			r.save()
 			messages.success(request, "Tu recompensa se ha guardado con éxito")
-			
+
 		else:
 			messages.error(request, "Algo malo pasó, U_U vuelve a intentarlo")
 		return redirect('dash:rewards',pk=pk)
@@ -200,16 +201,13 @@ class Team(View):
 
 class Extra(View):
 	def get(self, request, pk):
-		template_name = "dashboard/basics.html"
+		template_name = "dashboard/extra.html"
 		p = get_object_or_404(Project, id=pk)
 		context = {
 			'project':p,
 			'section':'extra'
 		}
 		return render(request, template_name,context)
-
-
-
 
 # Panels del lado del que apoya incluyendo chat
 
@@ -229,10 +227,46 @@ class Chating(View):
 		p = request.user.funds.all()
 		print(request.user.cchats.all())
 		# chat = request.user.cchats.all().get(project=project)
-		
+
 		context = {
 			'projects':p,
 			# 'chat':chat
 		}
 		return render(request, template_name, context)
 
+class Acciones(View):
+	def get(self, request, pk):
+		template_name = "dashboard/acciones.html"
+		p = get_object_or_404(Project, id=pk)
+		acciones = p.rewards.all()
+		context = {
+			'project':p,
+			'section':'acciones',
+			'rewards':acciones
+		}
+		return render(request, template_name, context)
+
+	def post(self, request, pk):
+
+		if request.POST.get('borrar'):
+			r = get_object_or_404(Acciones, id=request.POST.get('borrar'))
+			r.delete()
+			messages.success(request, "Haz borrado una accion")
+			return redirect('dash:acciones',pk=pk)
+
+		p = get_object_or_404(Project, id=pk)
+
+		form = NewAccionesForm(data=request.POST)
+		if request.POST.get('pk'):
+			r = get_object_or_404(Acciones,id=request.POST.get('pk'))
+			form = NewAccionesForm(data=request.POST, instance=r)
+
+		if form.is_valid():
+			r = form.save(commit=False)
+			r.project = p
+			r.save()
+			messages.success(request, "Tu accion se ha guardado con éxito")
+
+		else:
+			messages.error(request, "Algo malo pasó, U_U vuelve a intentarlo")
+		return redirect('dash:acciones',pk=pk)

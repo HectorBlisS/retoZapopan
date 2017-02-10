@@ -1,0 +1,102 @@
+<div class="col-md-3 col-md-offset-1">
+	<div class="todo">
+
+		<ul>
+
+			<a class="no-link" href="{%url 'dash:detail' project.pk%}">
+				<li class="{%if section == 'dash'%} todo-done {%endif%}">
+
+					<div class="todo-icon fui-resize"></div>
+					<div class="todo-content">
+						<h4 class="todo-name">
+							<strong>Dashboard</strong>
+						</h4> ¿Cómo va tu proyecto?
+					</div>
+
+				</li>
+			</a>
+
+			<a class="no-link" href="{%url 'dash:basics' project.pk%}">
+				<li class="{%if section == 'basics'%} todo-done {%endif%}">
+
+					<div class="todo-icon fui-eye"></div>
+					<div class="todo-content">
+						<h4 class="todo-name">
+							<strong>Info Basica</strong>
+						</h4> Empezamos por aquí
+					</div>
+
+				</li>
+			</a>
+
+			<a class="no-link" href="{%url 'dash:history' project.pk%}">
+				<li class="{%if section == 'history'%} todo-done {%endif%}">
+
+					<div class="todo-icon fui-image"></div>
+					<div class="todo-content">
+						<h4 class="todo-name">
+							<strong>Descripción</strong>
+						</h4> Cuentanos tu historia
+					</div>
+
+				</li>
+			</a>
+
+			<a class="no-link" href="{%url 'dash:rewards' project.pk%}">
+				<li class="{%if section == 'recompensas'%} todo-done {%endif%}">
+					<div class="todo-icon fui-heart"></div>
+					<div class="todo-content">
+						<h4 class="todo-name">
+							<strong>Recompensas</strong>
+						</h4> ¡Motiva a tu audiencia!
+					</div>
+				</li>
+			</a>
+
+			<a class="no-link" href="{%url 'dash:acciones' project.pk%}">
+				<li class="{%if section == 'acciones'%} todo-done {%endif%}">
+					<div class="todo-icon fui-check"></div>
+					<div class="todo-content">
+						<h4 class="todo-name">
+							<strong>Acciones</strong>
+						</h4> ¡Puedes recibir acciones!
+					</div>
+				</li>
+			</a>
+
+		<a class="no-link">
+			<li>
+				<div class="todo-icon fui-upload"></div>
+				<div class="todo-content">
+					<h4 class="todo-name">
+							<strong>Documentos</strong>
+						</h4> Sube tus documentos
+				</div>
+			</li>
+		</a>
+
+			<a class="no-link" href="{%url 'dash:chat'%}">
+				<li class="{%if section == 'chat'%} todo-done {%endif%}">
+					<div class="todo-icon fui-bubble"></div>
+					<div class="todo-content">
+						<h4 class="todo-name">
+							<strong>Mensajes</strong>
+						</h4> Comunicate con tus patrocinadores
+					</div>
+				</li>
+			</a>
+
+		<a class="no-link" href="{%url 'dash:extra' project.pk%}">
+			<li class="{%if section == 'extra'%} todo-done {%endif%}">
+				<div class="todo-icon fui-plus-circle"></div>
+				<div class="todo-content">
+					<h4 class="todo-name">
+							<strong>Extras</strong>
+						</h4> Tu equipo y más detalles
+				</div>
+			</li>
+		</a>
+
+		</ul>
+	</div>
+</div>

@@ -7,7 +7,10 @@ from django.core.urlresolvers import reverse
 from taggit.managers import TaggableManager
 
 
-
+STATUS = (
+    ('EN REVISIÓN', 'EN REVISIÓN'), 
+    ('APROBADO', 'APROBADO'), 
+    ('RECHAZADO', 'RECHAZADO'))
 class Project(models.Model):
 
     name = models.CharField(max_length=250)
@@ -19,6 +22,7 @@ class Project(models.Model):
     video = models.CharField(max_length=500, blank=True,null=True)
     publish = models.BooleanField(default=False)
     tags = TaggableManager()
+    status = models.CharField(max_length=100, choices=STATUS, default="REV", null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse('dash:detail', kwargs={'pk':self.pk})
