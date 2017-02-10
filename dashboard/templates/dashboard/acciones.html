@@ -46,6 +46,48 @@
 					</div>
 					{%endfor%}
 
+                    {% for r in rewards %}
+
+                    <div class="col-md-6">
+                        <div class="card_acciones">
+                            <div class="info_container">
+                                <div class="opacity">
+                                    <div class="info">
+                                        <p>{{ r.desc }}</p>
+                                        <span><strong>Cantidad: </strong>{{ r.quantity }}</span>
+                                        <span><strong>Entrega: </strong>{{r.deliver_date | date:"M,Y"}}</span>
+                                        <div>
+                                            <a class="btn_edit">
+                                                <span class="content center">
+                                                    Editar
+                                                </span>
+                                                <span class="content right">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                </span>
+                                            </a>
+                                            <form action="." method="post" class="col-md-12">
+                                                {%csrf_token%}
+                                                <input type="hidden" name="borrar" value="{{r.pk}}">
+                                                <input type="submit" class="btn btn-danger col-xs-6 col-md-offset-3" value="Eliminar" {%if project.publish%}disabled{%endif%}/>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="http://designmodo.github.io/Flat-UI/img/icons/svg/gift-box.svg" alt="">
+                                <hr>
+                                <div class="main_info">
+                                    <p>{{ r.title }}</p>
+                                    <p><strong>Inversión: </strong>$ {{ r.price }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
 
 				</article>
 				<article class="row panel-body">
