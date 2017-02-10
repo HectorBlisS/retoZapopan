@@ -36,7 +36,7 @@ urlpatterns = [
 		views.Chating.as_view(),
 		name="chat"),
 
-	url(r'^(?P<pk>/d+)/acciones/$',
+	url(r'^(?P<pk>\d+)/acciones/$',
 		views.Acciones.as_view(),
 		name="acciones"),
 
