@@ -1,0 +1,131 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<section class="contenedor">
+
+	<div class="panel">
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-sm-2 col-xs-4">
+					<a href="{{user.get_absolute_url}}">
+						{%if user.profile.img%}
+						<img class="redonda img-responsive" src="{{user.profile.img.url}}">
+						{%else%}
+						<img class="img_perfil redonda"  src="https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/girl-512.png">
+						{%endif%}
+					</a>
+				</div>
+				<div class="col-sm-8 col-sm-offset-1">
+					<div class="row">
+						<h6 class="col-xs-5">
+							{{user.username}}
+						</h6>
+						<a href="#!" data-id="{{user.id}}" data-action="{%if request.user in user.followers.all%}un{%endif%}follow" class="follow button">
+							<button class="btn btn-primary col-xs-4">
+								Seguir
+							</button>
+						</a>
+					</div>
+					<div class="row hidden-xs">
+						<span class="col-sm-4">
+							<strong>2</strong>
+							Publicaciones
+						</span>
+						<span class="col-sm-4">
+							{%with total_followers=user.followers.count%}
+							<strong class="total">{{total_followers}}</strong>
+							Follower{{total_followers|pluralize}}
+							{%endwith%}
+						</span>
+						<span class="col-sm-4">
+							<strong>244</strong>
+							Following
+						</span>
+					</div>
+					<div class="row">
+						<h5 class="col-sm-6 hidden-xs">
+							{{user.get_full_name}}
+						</h5>
+					</div>
+				</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+</section>
+
+
+
+
+
+
+
+
+<!--
+<div id="profile-info">
+
+		<div class="user">
+			
+
+			<div class="info">
+				
+				{%with total_followers=user.followers.count%}
+				<span class="count">
+					<span class="total">{{total_followers}}</span>
+					follower{{total_followers|pluralize}}
+				</span>
+				{%if not request.user == user%}
+				<a href="#!" data-id="{{user.id}}" data-action="{%if request.user in user.followers.all%}un{%endif%}follow" class="follow button">
+					{%if request.user not in user.followers.all%}
+					Follow
+					{%else%}
+					Unfollow
+					{%endif%}
+				</a>
+				{%endif%}
+				{%endwith%}
+			</div>
+		</div>
+
+	</div>
+-->
+{%endblock content%}
+
+
+
+
+
+
+
+
+
+{%block domready%}
+
+$('a.follow').click(function(e){
+	e.preventDefault();
+	console.log('puchado')
+	$.post('{%url "user_follow"%}',
+	{
+		id:$(this).data('id'),
+		action:$(this).data('action')
+	},
+	function(data){
+		console.log(data['status']);
+		if(data['status'] == 'ok'){
+			var previous_action = $('a.follow').data('action');
+			// toggle data-action
+			$('a.follow').data('action',previous_action == 'follow' ? 'unfollow':'follow');
+			//toggle link text
+			$('a.follow button').text(previous_action == 'follow' ? 'Unfollow':'Follow');
+			// update total followers
+			var previous_followers = parseInt($('.total').text());
+			console.log(previous_followers);
+			$('.total').text(previous_action == 'follow' ? previous_followers +1:previous_followers -1);
+		}
+	});
+});
+
+{%endblock domready%}

@@ -45,7 +45,9 @@
 			{%endif%}
 		</div>
 		<div class="col-xs-9">
-			<span>{{project.user.first_name}} {{project.user.last_name}}</span>
+			<a href="{{project.user.get_absolute_url}}">
+			<span>{{project.user.get_full_name}}</span>
+			</a>
 			<div class="divider"></div>
 			<a href="mailto:{{project.user.email}}">{{project.user.email}}</a>
 		</div>
