@@ -2,18 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="75ca62c7-9d65-42e8-b82b-02902774a1c5" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/staticfiles/css/_acciones.css" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/projects/images/orca_share_media1480003228990.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/projects/images/orca_share_media1480003229092.JPG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/media/projects/images/pexels-photo-196640.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/manager/forms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/migrations/0003_auto_20170210_2117.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/migrations/0004_auto_20170210_2124.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboard/forms.py" afterPath="$PROJECT_DIR$/dashboard/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboard/templates/dashboard/acciones.html" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard/acciones.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboard/templates/dashboard/saul.html" afterPath="$PROJECT_DIR$/dashboard/templates/dashboard/saul.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboard/urls.py" afterPath="$PROJECT_DIR$/dashboard/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboard/views.py" afterPath="$PROJECT_DIR$/dashboard/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects/admin.py" afterPath="$PROJECT_DIR$/projects/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/_dashboard.css" afterPath="$PROJECT_DIR$/static/css/_dashboard.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/app.css" afterPath="$PROJECT_DIR$/static/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/staticfiles/css/app.css" afterPath="$PROJECT_DIR$/staticfiles/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/templates/manager/detail.html" afterPath="$PROJECT_DIR$/manager/templates/manager/detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/templates/manager/list.html" afterPath="$PROJECT_DIR$/manager/templates/manager/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/urls.py" afterPath="$PROJECT_DIR$/manager/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manager/views.py" afterPath="$PROJECT_DIR$/manager/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/projects/models.py" afterPath="$PROJECT_DIR$/projects/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/_manager.css" afterPath="$PROJECT_DIR$/static/css/_manager.css" />
     </list>
     <ignored path="RZapopan.iws" />
     <ignored path=".idea/workspace.xml" />
