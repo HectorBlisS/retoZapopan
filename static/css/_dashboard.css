@@ -56,7 +56,7 @@ img.redonda{
 .chat_bg{
 	background-image: url('https://s-media-cache-ak0.pinimg.com/564x/79/5c/ab/795cabc4647f73b365e2e6eabd0f34dc.jpg');
 	/*background-size: cover;*/
-	background-repeat:repeat; 
+	background-repeat:repeat;
 }
 .chat-cuerpo{
 	height: 535px;
@@ -117,11 +117,11 @@ img.redonda{
 
     /*background-image:url(https://mynoise.net/Data/WHITE/fb.jpg); */
     background: #607d8b;
-	background-size:cover repeat; 
+	background-size:cover repeat;
 	background-position: center;
 	padding:0;
 
-	
+
 }
 
 .Middle {

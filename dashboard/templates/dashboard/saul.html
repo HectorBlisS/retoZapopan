@@ -4,7 +4,7 @@
 		<ul>
 
 			<a class="no-link" href="{%url 'dash:detail' project.pk%}">
-				<li>
+				<li class="{%if 'section==dash'%} todo-done {%endif%}">
 
 					<div class="todo-icon fui-resize"></div>
 					<div class="todo-content">
@@ -17,7 +17,7 @@
 			</a>
 
 			<a class="no-link" href="{%url 'dash:basics' project.pk%}">
-				<li>
+				<li class="{%if 'section==basics'%} todo-done {%endif%}">
 
 					<div class="todo-icon fui-eye"></div>
 					<div class="todo-content">
@@ -30,7 +30,7 @@
 			</a>
 
 			<a class="no-link" href="{%url 'dash:history' project.pk%}">
-				<li>
+				<li class="{%if 'section==history'%} todo-done {%endif%}">
 
 					<div class="todo-icon fui-image"></div>
 					<div class="todo-content">
@@ -43,7 +43,7 @@
 			</a>
 
 			<a class="no-link" href="{%url 'dash:rewards' project.pk%}">
-				<li>
+				<li class="{%if 'section==rewards'%} todo-done {%endif%}">
 					<div class="todo-icon fui-heart"></div>
 					<div class="todo-content">
 						<h4 class="todo-name">
@@ -53,8 +53,8 @@
 				</li>
 			</a>
 
-			<a class="no-link" href="{%url 'dash:rewards' project.pk%}">
-				<li>
+			<a class="no-link" href="{%url 'dash:acciones' project.pk%}">
+				<li class="{%if 'section==acciones'%} todo-done {%endif%}">
 					<div class="todo-icon fui-check"></div>
 					<div class="todo-content">
 						<h4 class="todo-name">
@@ -64,6 +64,7 @@
 				</li>
 			</a>
 
+		<a class="no-link">
 			<li>
 				<div class="todo-icon fui-upload"></div>
 				<div class="todo-content">
@@ -72,9 +73,10 @@
 						</h4> Sube tus documentos
 				</div>
 			</li>
+		</a>
 
 			<a class="no-link" href="{%url 'dash:chat'%}">
-				<li>
+				<li class="{%if 'section==chat'%} todo-done {%endif%}">
 					<div class="todo-icon fui-bubble"></div>
 					<div class="todo-content">
 						<h4 class="todo-name">
@@ -85,7 +87,7 @@
 			</a>
 
 		<a class="no-link" href="{%url 'dash:extra' project.pk%}">
-			<li>
+			<li {%if 'section==extra'%}{%endif%} class="todo-done">
 				<div class="todo-icon fui-plus-circle"></div>
 				<div class="todo-content">
 					<h4 class="todo-name">

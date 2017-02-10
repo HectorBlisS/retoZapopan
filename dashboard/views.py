@@ -191,9 +191,6 @@ class Extra(View):
 		}
 		return render(request, template_name,context)
 
-
-
-
 # Panels del lado del que apoya incluyendo chat
 
 class Support(View):
@@ -221,37 +218,37 @@ class Chating(View):
 
 class Acciones(View):
 	def get(self, request, pk):
-		template_name = "dashboard/rewards.html"
+		template_name = "dashboard/acciones.html"
 		p = get_object_or_404(Project, id=pk)
-		rewards = p.rewards.all()
+		acciones = p.rewards.all()
 		context = {
 			'project':p,
-			'section':'recompensas',
-			'rewards':rewards
+			'section':'acciones',
+			'rewards':acciones
 		}
 		return render(request, template_name, context)
 
 	def post(self, request, pk):
 
 		if request.POST.get('borrar'):
-			r = get_object_or_404(Reward, id=request.POST.get('borrar'))
+			r = get_object_or_404(Acciones, id=request.POST.get('borrar'))
 			r.delete()
-			messages.success(request, "Haz borrado una recompensa")
-			return redirect('dash:rewards',pk=pk)
+			messages.success(request, "Haz borrado una accion")
+			return redirect('dash:acciones',pk=pk)
 
 		p = get_object_or_404(Project, id=pk)
 
-		form = NewRewardForm(data=request.POST)
+		form = NewAccionesForm(data=request.POST)
 		if request.POST.get('pk'):
-			r = get_object_or_404(Reward,id=request.POST.get('pk'))
-			form = NewRewardForm(data=request.POST, instance=r)
+			r = get_object_or_404(Acciones,id=request.POST.get('pk'))
+			form = NewAccionesForm(data=request.POST, instance=r)
 
 		if form.is_valid():
 			r = form.save(commit=False)
 			r.project = p
 			r.save()
-			messages.success(request, "Tu recompensa se ha guardado con éxito")
+			messages.success(request, "Tu accion se ha guardado con éxito")
 
 		else:
 			messages.error(request, "Algo malo pasó, U_U vuelve a intentarlo")
-		return redirect('dash:rewards',pk=pk)
+		return redirect('dash:acciones',pk=pk)
