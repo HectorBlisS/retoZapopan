@@ -8,6 +8,7 @@ from inputs import urls as inputsURLs
 from dashboard import urls as dashboardURLs
 from projects import urls as projectsURLs
 from cart import urls as cartURLs
+from manager import urls as managerUrls
 
 from django.views.static import serve
 from django.conf import settings
@@ -36,8 +37,13 @@ urlpatterns = [
     url(r'^cart/',
         include(cartURLs, namespace="cart")),
 
+
+    url(r'^manager/', 
+        include(managerUrls, namespace="manager")),
+
     url(r'^muro/',
         include(muroUrls, namespace="muro")),
+
 
     #Django Admin
     url(r'^admin/', admin.site.urls),
