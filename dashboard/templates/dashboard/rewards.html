@@ -21,7 +21,7 @@
 						<div style="min-height:300px" class="tile">
 							<h4>$ {{r.price}}</h4>
 							<h6>{{r.title}}</h6>
-							<span style="color:grey">{{r.desc}}</span>
+							<span style="color:grey">{{r.desc | truncatewords:10}}</span>
 							<br>
 							<span>Cantidad: {{r.quantity}}</span>
 							<br>

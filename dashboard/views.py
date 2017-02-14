@@ -13,14 +13,32 @@ from django.utils.decorators import method_decorator
 from taggit.models import Tag
 
 
+from actions.models import Action
+from muro.forms import PostForm
+
+
+
 class Dash(View):
 	@method_decorator(login_required)
 	def get(self, request):
 		template_name = "dashboard/perfil.html"
 		projects = request.user.projects.all()
+		# actions = Action.objects.exclude(user=request.user)exclude(user=request.user)
+		actions = Action.objects.all()
+		following_ids = request.user.following.values_list('id',flat=True)
+		if following_ids:
+			# si el usuario está siguiendo a otros, filtramos las acciones
+			# actions = actions.filter(user_id__in=following_ids)
+			# optimizando la peticion:
+			actions = actions.filter(user_id__in=following_ids).select_related('user','user__profile').prefetch_related('target')
+		actions = actions[:10]
+		
+		form = PostForm()
 
 		context = {
-			'projects':projects
+			'projects':projects,
+			'actions':actions,
+			'form':form
 		}
 		return render(request, template_name, context)
 

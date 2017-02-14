@@ -12,6 +12,9 @@ class ManageView(View):
 	
 	def get(self, request, cat=None, status=None):
 		template_name = 'manager/list.html'
+		cats = Tag.objects.all()
+
+
 		if status:
 			projects = Project.objects.all().filter(status=status)	
 		elif cat:
@@ -22,6 +25,7 @@ class ManageView(View):
 
 		context={
 		'projects': projects,
+		'cats':cats
 		}
 
 		return render(request, template_name, context)

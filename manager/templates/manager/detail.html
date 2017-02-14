@@ -19,11 +19,14 @@
 		padding: 1%;
 		font-size: 3rem;
 	}
+	.detailm h3{
+		margin: 0;
+	}
 </style>
 
 <section class="detailm">
 	<div class="row">
-	<div class="col-xs-5">
+	<div class="col-xs-7">
 		<!--<div class="row">
 			<div class="col-xs-5">
 				<h3>{{project.name}}</h3>
@@ -35,11 +38,11 @@
 		<div class="mcard">
 			<h3 align="center">{{project.name}}</h3>
 		
-			<iframe id="vidPrev" width="100%" height="300px" src="{{project.video}}" frameborder="0" allowfullscreen=""></iframe>
+			<iframe id="vidPrev" width="100%" height="400px" src="{{project.video}}" frameborder="0" allowfullscreen=""></iframe>
 			<span>{{project.desc | safe}}</span>
 		</div>
 	</div>
-	<div class="col-xs-7">
+	<div class="col-xs-5">
 		<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
 		<div class="row">
 			<div class="col-xs-8">

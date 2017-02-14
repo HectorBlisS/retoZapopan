@@ -27,6 +27,31 @@
 	left: 10px;
 
 }
+.post-muro img{
+	width: 50px;
+	position: absolute;
+	top:25px;
+	left:30px;
+}
+
+
+.input-muro{
+	height: 100px;
+	padding-left: 80px;
+	padding-right: 80px;
+}
+.post-muro div{
+	width: 100%;
+	background-color: white;
+	height: 50px;
+}
+.post-muro div input[type="submit"]{
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+
+
 
 img.redonda{
 	border-radius: 50%;
