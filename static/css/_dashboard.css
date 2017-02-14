@@ -27,6 +27,13 @@
 	left: 10px;
 
 }
+.mini2{
+	font-size:1rem;padding-left:90px;
+	position: absolute;
+	bottom:-15px;
+	left: -85px;
+
+}
 .post-muro img{
 	width: 50px;
 	position: absolute;

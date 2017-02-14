@@ -24,7 +24,7 @@ class Dash(View):
 		template_name = "dashboard/perfil.html"
 		projects = request.user.projects.all()
 		# actions = Action.objects.exclude(user=request.user)exclude(user=request.user)
-		actions = Action.objects.all()
+		actions = Action.objects.exclude(user=request.user)
 		following_ids = request.user.following.values_list('id',flat=True)
 		if following_ids:
 			# si el usuario está siguiendo a otros, filtramos las acciones

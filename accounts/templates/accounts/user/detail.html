@@ -23,7 +23,8 @@
 						</h6>
 						<a href="#!" data-id="{{user.id}}" data-action="{%if request.user in user.followers.all%}un{%endif%}follow" class="follow button">
 							<button class="btn btn-primary col-xs-4">
-								Seguir
+								{%if request.user in user.followers.all%}Unfollow
+								{%else%}Follow{%endif%}
 							</button>
 						</a>
 					</div>
