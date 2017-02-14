@@ -35,9 +35,7 @@ INSTALLED_APPS = [
     'funds',
     'taggit',
     'cart',
-
     'manager',
-
     'muro',
     'actions',
 
@@ -73,6 +71,9 @@ TEMPLATES = [
                 # social
                 # 'social_django.apps.django_app.context_processors.backends',
                 # 'social_django.apps.django_app.context_processors.login_redirect',
+                
+                # acciones del usuario
+                'actions.context_processors.my_actions',
             ],
         },
     },

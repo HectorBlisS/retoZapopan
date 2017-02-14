@@ -119,7 +119,51 @@
       <div class="navbar-right">
         {%if request.user.is_authenticated%}
 
-        <!--badges-->
+        <!--alertas-->
+        <ul class="nav navbar-nav">
+          <li class="noti"  data-placement="bottom" title="">
+            <a id="noti" href="#!">
+              <span class="fui-volume"></span>
+              <!-- Indicator with number -->
+              <span class="navbar-new">2</span>
+            </a>
+            <div class="notify hidden-sm hidden-xs">
+              <ul width="auto">
+                <div class="arrow-up"></div>
+                {%for a in my_actions%}
+                <a href="{{a.user.get_absolute_url}}">
+                <li>
+                  <img class="redonda" width="50" src="{{a.user.profile.img.url}}">
+                  <span style="position:relative">
+                    
+                    {%if a.verb == "está siguiendo a"%}
+                    {{a.user}} 
+                    te está siguiendo
+                    <span class="mini2">
+                      hace {{a.created |timesince}}
+                    </span>
+                  </span>
+                    {%else%}
+                    {{a.user}} 
+                    {{a.verb}} 
+                    {{a.target}}
+                    
+                    <span class="mini2">
+                      hace {{a.created |timesince}}
+                    </span>
+                  </span>
+                  <img class="redonda" width="50" src="{{a.target.profile.img.url}}">
+                  {%endif%}
+                  </li>
+                  </a>
+                {%endfor%}
+
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <!--mensajes-->
         <ul class="nav navbar-nav">
           <li data-toggle="tooltip" data-placement="bottom" title="Tienes mensajes pendientes">
             <a href="{%url 'dash:chat'%}">
@@ -129,6 +173,7 @@
             </a>
           </li>
         </ul>
+
         
         
         <!-- Inverted skin  -->
@@ -306,10 +351,17 @@ $.ajaxSetup({
     $(document).ready(function(){
       {%block domready%}
       {%endblock domready%}
+
+      //escondemos las notificaciones
+      $('.notify').hide();
     });
   </script>
 
 
-
+<script>
+  $('#noti').click(function(){
+    $('.notify').slideToggle();
+  });
+</script>
 </body>
 </html>
