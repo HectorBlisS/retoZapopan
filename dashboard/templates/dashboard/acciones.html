@@ -16,48 +16,17 @@
 
 				<article class="row panel-body">
 
-					<!-- {%for r in rewards%}
-					<div class="col-md-6">
-						<div style="min-height:300px" class="tile">
-							<h4>$ {{r.price}}</h4>
-							<h6>{{r.title}}</h6>
-							<span style="color:grey">{{r.desc}}</span>
-							<br>
-							<span>Cantidad: {{r.quantity}}</span>
-							<br>
-							<span>Entrega: {{r.deliver_date | date:"M,Y"}}</span>
-							<div class="row">
-								<a data-toggle="modal" data-target=".edicion-reward" data-reward="{{r.pk}}" class="edita btn btn-warning col-xs-6" {%if project.publish%}disabled{%endif%}>Editar</a>
-								<form action="." method="post">
-									{%csrf_token%}
-								<input type="hidden" name="borrar" value="{{r.pk}}">
-								<input type="submit" class="btn btn-danger col-xs-6" value="Eliminar" {%if project.publish%}disabled{%endif%}/>
-								</form>
-							</div>
-						</div>
-					</div>
-					{%empty%}
-					<div class="col-md-6">
-						<div class="tile">
-							<h6>Aún no agregas recompensas</h6>
-							<p>¡Agrega una!</p>
-							<img width="100%" src="http://designmodo.github.io/Flat-UI/img/icons/svg/gift-box.svg">
-						</div>
-					</div>
-					{%endfor%}-->
-
-                    {% for r in rewards %}
-
-                    <div class="col-md-6">
+					 {%for r in rewards%}
+                         <div class="col-md-6">
                         <div class="card_acciones">
                             <div class="info_container">
                                 <div class="opacity">
                                     <div class="info">
-                                        <p>{{ r.desc | truncatewords: 15 }}</p>
+                                        <p>{{ r.desc|truncatewords:15 }}</p>
                                         <span><strong>Cantidad: </strong>{{ r.quantity }}</span>
                                         <span><strong>Entrega: </strong>{{r.deliver_date | date:"M,Y"}}</span>
                                         <div>
-                                            <a class="btn_edit">
+                                            <a class="btn_edit" data-toggle="modal" data-target=".edicion-reward" data-reward="{{r.pk}}" {%if project.publish%}disabled{%endif%}>
                                                 <span class="content center">
                                                     Editar
                                                 </span>
@@ -85,8 +54,34 @@
                             </div>
                         </div>
                     </div>
-
-                    {% endfor %}
+					<!--<div class="col-md-6">
+						<div style="min-height:300px" class="tile">
+							<h4>$ {{r.price}}</h4>
+							<h6>{{r.title}}</h6>
+							<span style="color:grey">{{r.desc}}</span>
+							<br>
+							<span>Cantidad: {{r.quantity}}</span>
+							<br>
+							<span>Entrega: {{r.deliver_date | date:"M,Y"}}</span>
+							<div class="row">
+								<a data-toggle="modal" data-target=".edicion-reward" data-reward="{{r.pk}}" class="edita btn btn-warning col-xs-6" {%if project.publish%}disabled{%endif%}>Editar</a>
+								<form action="." method="post">
+									{%csrf_token%}
+								<input type="hidden" name="borrar" value="{{r.pk}}">
+								<input type="submit" class="btn btn-danger col-xs-6" value="Eliminar" {%if project.publish%}disabled{%endif%}/>
+								</form>
+							</div>
+						</div>
+					</div>-->
+					{%empty%}
+					<div class="col-md-6">
+						<div class="tile">
+							<h6>Aún no agregas recompensas</h6>
+							<p>¡Agrega una!</p>
+							<img width="100%" src="http://designmodo.github.io/Flat-UI/img/icons/svg/gift-box.svg">
+						</div>
+					</div>
+					{%endfor%}
 
 
 				</article>
