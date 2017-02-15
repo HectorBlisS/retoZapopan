@@ -76,37 +76,39 @@
 						<span class="input-group-btn">
 							<button type="submit" class="btn"><span class="fui-search"></span></button>
 						</span>
+					</div><br>
+					<div class="panel">
+						<table>
+							<thead><h3 align="center">Todos los Proyectos</h3></thead>
+							<tbody>
+								<tr>
+									<th>ID</th>
+									<th>Nombre</th>
+									<th>Usuario</th>
+									<th>Meta</th>
+									<th>Categoría</th>
+									<th>Status</th>
+									<th>Detalles</th>
+								</tr>
+								{%for p in projects%}
+						
+								<tr>
+									<td>{{p.id}}</td>
+									<td>{{p.name}}</td>
+									<td>{{p.user}}</td>
+									<td>${{p.goal}}</td>
+									<td class="mactive">{{p.tags.all|join:", "}}</td>
+									<!--STATUS-->
+									{%if p.status == "APROBADO"%}<td> <i class="fa fa-check-circle v" aria-hidden="true"></i> </td>{%endif%}
+									{%if p.status == "RECHAZADO"%}<td> <i class="fa fa-times-circle r" aria-hidden="true"></i> </td>{%endif%}
+									{%if p.status == "REVISION"%}<td> <i class="fa fa-exclamation-circle a" aria-hidden="true"></i> </td>{%endif%}
+									<!--STATUS-->
+									<td><a class="btn btn-primary editbtn" href="{%url 'manager:detail' p.id%}">Editar</a></td>
+								</tr>
+								{%endfor%}
+							</tbody>
+						</table>
 					</div>
-					<table>
-						<thead><h3 align="center">Todos los Proyectos</h3></thead>
-						<tbody>
-							<tr>
-								<th>ID</th>
-								<th>Nombre</th>
-								<th>Usuario</th>
-								<th>Meta</th>
-								<th>Categoría</th>
-								<th>Status</th>
-								<th>Detalles</th>
-							</tr>
-							{%for p in projects%}
-					
-							<tr>
-								<td>{{p.id}}</td>
-								<td>{{p.name}}</td>
-								<td>{{p.user}}</td>
-								<td>${{p.goal}}</td>
-								<td class="mactive">{{p.tags.all|join:", "}}</td>
-								<!--STATUS-->
-								{%if p.status == "APROBADO"%}<td> <i class="fa fa-check-circle v" aria-hidden="true"></i> </td>{%endif%}
-								{%if p.status == "RECHAZADO"%}<td> <i class="fa fa-times-circle r" aria-hidden="true"></i> </td>{%endif%}
-								{%if p.status == "REVISION"%}<td> <i class="fa fa-exclamation-circle a" aria-hidden="true"></i> </td>{%endif%}
-								<!--STATUS-->
-								<td><a class="btn btn-primary editbtn" href="{%url 'manager:detail' p.id%}">Editar</a></td>
-							</tr>
-							{%endfor%}
-						</tbody>
-					</table>
 				</div>
 			</div>
 			<div class="col-lg-4">
