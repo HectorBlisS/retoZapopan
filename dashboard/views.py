@@ -247,11 +247,11 @@ class Acciones(View):
     def get(self, request, pk):
         template_name = "dashboard/acciones.html"
         p = get_object_or_404(Project, id=pk)
-        acciones = p.rewards.all()
+        acciones = p.acciones.all()
         context = {
             'project': p,
             'section': 'acciones',
-            'rewards': acciones
+            'acciones': acciones
         }
         return render(request, template_name, context)
 
