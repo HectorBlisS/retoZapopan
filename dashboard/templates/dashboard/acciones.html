@@ -1,8 +1,4 @@
-{%extends 'base.html'%}
-{%load dash_tags%}
-
-{%block content%}
-{%count_projects as nums %}
+{%extends 'base.html'%} {%load dash_tags%} {%block content%} {%count_projects as nums %}
 
 <section class="contendor centrado">
 
@@ -10,14 +6,51 @@
 
 	<article class="row">
 
-{%include 'dashboard/saul.html'%}
+		{%include 'dashboard/saul.html'%}
 
 		<div class="panel col-md-6 col-md-offset-1">
 
-				<article class="row panel-body">
+			<article class="row panel-body">
 
-					<!-- {%for r in rewards%}
-					<div class="col-md-6">
+				{%for r in acciones%}
+				<div class="col-md-6">
+					<div class="card_acciones">
+						<div class="info_container">
+							<div class="opacity">
+								<div class="info">
+									<p>{{ r.desc|truncatewords:15 }}</p>
+									<span><strong>Cantidad: </strong>{{ r.quantity }}</span>
+									<span><strong>Entrega: </strong>{{r.deliver_date | date:"M,Y"}}</span>
+									<div>
+										<a class="btn_edit" data-toggle="modal" data-target=".edicion-reward" data-reward="{{r.pk}}" {%if project.publish%}disabled{%endif%}>
+											<span class="content center">
+                      	Editar
+                      </span>
+											<span class="content right">
+                      	<i class="fa fa-pencil" aria-hidden="true"></i>
+                      </span>
+										</a>
+										<form action="." method="post" class="col-md-12">
+											{%csrf_token%}
+											<input type="hidden" name="borrar" value="{{r.pk}}">
+											<input type="submit" class="btn btn-danger col-xs-6 col-md-offset-3" value="Eliminar" {%if project.publish%}disabled{%endif%}/>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="img_container">
+							<img src="http://designmodo.github.io/Flat-UI/img/icons/svg/gift-box.svg" alt="">
+							<hr>
+							<div class="main_info">
+								<p>{{ r.title }}</p>
+								<p><strong>Inversión: </strong>$ {{ r.price }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--<div class="col-md-6">
 						<div style="min-height:300px" class="tile">
 							<h4>$ {{r.price}}</h4>
 							<h6>{{r.title}}</h6>
@@ -35,68 +68,26 @@
 								</form>
 							</div>
 						</div>
+					</div>-->
+				{%empty%}
+				<div class="col-md-6">
+					<div class="tile">
+						<h6>Aún no agregas acciones</h6>
+						<p>¡Agrega una!</p>
+						<img width="100%" src="http://designmodo.github.io/Flat-UI/img/icons/svg/gift-box.svg">
 					</div>
-					{%empty%}
-					<div class="col-md-6">
-						<div class="tile">
-							<h6>Aún no agregas recompensas</h6>
-							<p>¡Agrega una!</p>
-							<img width="100%" src="http://designmodo.github.io/Flat-UI/img/icons/svg/gift-box.svg">
-						</div>
-					</div>
-					{%endfor%}-->
-
-                    {% for r in rewards %}
-
-                    <div class="col-md-6">
-                        <div class="card_acciones">
-                            <div class="info_container">
-                                <div class="opacity">
-                                    <div class="info">
-                                        <p>{{ r.desc | truncatewords: 15 }}</p>
-                                        <span><strong>Cantidad: </strong>{{ r.quantity }}</span>
-                                        <span><strong>Entrega: </strong>{{r.deliver_date | date:"M,Y"}}</span>
-                                        <div>
-                                            <a class="btn_edit">
-                                                <span class="content center">
-                                                    Editar
-                                                </span>
-                                                <span class="content right">
-                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-                                            <form action="." method="post" class="col-md-12">
-                                                {%csrf_token%}
-                                                <input type="hidden" name="borrar" value="{{r.pk}}">
-                                                <input type="submit" class="btn btn-danger col-xs-6 col-md-offset-3" value="Eliminar" {%if project.publish%}disabled{%endif%}/>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="http://designmodo.github.io/Flat-UI/img/icons/svg/gift-box.svg" alt="">
-                                <hr>
-                                <div class="main_info">
-                                    <p>{{ r.title }}</p>
-                                    <p><strong>Inversión: </strong>$ {{ r.price }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {% endfor %}
+				</div>
+				{%endfor%}
 
 
-				</article>
-				<article class="row panel-body">
-					<div data-toggle="tooltip" data-placement="bottom" title="Agregar nueva recompensa" class="col-md-1">
+			</article>
+			<article class="row panel-body">
+				<div data-toggle="tooltip" data-placement="bottom" title="Agregar nueva accion" class="col-md-1">
 					<button id="agrega" type="button" data-toggle="modal" class="btn btn-info" data-target=".bs-example-modal-sm">
 						<span class="fui-plus-circle"></span>
 					</button>
-					</div>
-				</article>
+				</div>
+			</article>
 
 
 		</div>
@@ -110,230 +101,228 @@
 <!-- Small modal -->
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content centrado">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content centrado">
 
-      <ol class="breadcrumb">
-		  <li><a href="#">
-		  	<h5>Nueva recompensa</h5>
-		  	<p>para {{project}}</p>
-		  </a></li>
-		</ol>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#">
+						<h5>Nueva Accion</h5>
+						<p>para {{project}}</p>
+					</a>
+				</li>
+			</ol>
 
-		<form id="reward" class="row panel panel-default" action="." method="post">
+			<form id="reward" class="row panel panel-default" action="." method="post">
 				{%csrf_token%}
-					<div class="col-md-10 col-md-offset-1 panel-body">
+				<div class="col-md-10 col-md-offset-1 panel-body">
 
 					<div class="row">
-					<h6 class="col-md-12">
-						¿Cómo se llama tu recompensa?
+						<h6 class="col-md-12">
+						¿Cómo se llama tu accion?
 					</h6>
-					<input name="title" required placeholder="Nuestro corazon" class="form-control input-hg col-md-12" type="text">
+						<input name="title" required placeholder="Nuestro corazon" class="form-control input-hg col-md-12" type="text">
 					</div>
 
 					<div class="row">
-					<h6 class="col-md-12">
+						<h6 class="col-md-12">
 						¿Cuanto dinero se invierte?
 					</h6>
-					<div class="input-group">
-					  <span class="input-group-addon">$</span>
-					  <input name="price" required type="number" class="form-control input-hg" placeholder="500" />
-					</div>
+						<div class="input-group">
+							<span class="input-group-addon">$</span>
+							<input name="price" required type="number" class="form-control input-hg" placeholder="500" />
+						</div>
 					</div>
 
 					<div class="row">
-					<h6 class="col-md-12">
-						¿describe tu recompensa (140 ccaracteres)?
+						<h6 class="col-md-12">
+						¿describe tu accion (140 ccaracteres)?
 					</h6>
-					<div class="input-group">
-					  <span class="input-group-addon">
+						<div class="input-group">
+							<span class="input-group-addon">
 					  	<i class="fa fa-commenting-o" aria-hidden="true"></i>
 					  </span>
-					  <textarea name="desc" required class="form-control input-hg" placeholder="te daremos nuestro corazón"></textarea>
-					</div>
+							<textarea name="desc" required class="form-control input-hg" placeholder="te daremos nuestro corazón"></textarea>
+						</div>
 					</div>
 
 					<div class="row">
-					<h6 class="col-md-12">
-						¿Cuantas recompensas puedes ofrecer?
+						<h6 class="col-md-12">
+						¿Cuantas acciones puedes ofrecer?
 					</h6>
-					<div class="input-group">
-					  <span class="input-group-addon">
+						<div class="input-group">
+							<span class="input-group-addon">
 					  	<i class="fa fa-stack-overflow" aria-hidden="true"></i>
 					  </span>
-					  <input name="quantity" type="number" required class="form-control input-hg" placeholder="10"/>
-					</div>
+							<input name="quantity" type="number" required class="form-control input-hg" placeholder="10" />
+						</div>
 					</div>
 
 					<div class="row">
-					<h6 class="col-md-12">
-						¿En que fecha aproximada entregaras esta recompensa?
+						<h6 class="col-md-12">
+						¿En que fecha aproximada entregaras esta accion?
 					</h6>
-					<div class="input-group">
-					  <span class="input-group-addon">
+						<div class="input-group">
+							<span class="input-group-addon">
 					  	<i class="fa fa-calendar" aria-hidden="true"></i>
 					  </span>
-					  <input name="deliver_date" type="date" required class="form-control input-hg" placeholder="MM/YYYY"/>
-					</div>
+							<input name="deliver_date" type="date" required class="form-control input-hg" placeholder="MM/YYYY" />
+						</div>
 					</div>
 
 					<br>
-					<input {%if project.publish%}disabled{%endif%}  class="btn btn-hg btn-success" type="submit" value="Guardar">
+					<input {%if project.publish%}disabled{%endif%} class="btn btn-hg btn-success" type="submit" value="Guardar">
 
-					</div> <!-- offset-->
+				</div>
+				<!-- offset-->
 
 			</form>
 
 
-    </div>
-  </div>
+		</div>
+	</div>
 </div>
 
 
 <!-- edicion de recompensa -->
 
 <div class="modal fade edicion-reward" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content centrado">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content centrado">
 
-      <ol class="breadcrumb">
-		  <li><a href="#">
-		  	<h5>Edita tu recompensa</h5>
-		  	<p>para {{project}}</p>
-		  </a></li>
-		</ol>
+			<ol class="breadcrumb">
+				<li>
+					<a href="#">
+						<h5>Edita tu accion</h5>
+						<p>para {{project}}</p>
+					</a>
+				</li>
+			</ol>
 
-		<form id="edit" class="row panel panel-default" action="." method="post">
+			<form id="edit" class="row panel panel-default" action="." method="post">
 				{%csrf_token%}
 				<input type="hidden" name="pk">
-					<div class="col-md-10 col-md-offset-1 panel-body">
+				<div class="col-md-10 col-md-offset-1 panel-body">
 
 					<div class="row">
-					<h6 class="col-md-12">
-						¿Cómo se llama tu recompensa?
+						<h6 class="col-md-12">
+						¿Cómo se llama tu accion?
 					</h6>
-					<input name="title" required placeholder="Nuestro corazon" class="form-control input-hg col-md-12" type="text">
+						<input name="title" required placeholder="Nuestro corazon" class="form-control input-hg col-md-12" type="text">
 					</div>
 
 					<div class="row">
-					<h6 class="col-md-12">
+						<h6 class="col-md-12">
 						¿Cuanto dinero se invierte?
 					</h6>
-					<div class="input-group">
-					  <span class="input-group-addon">$</span>
-					  <input name="price" required type="number" class="form-control input-hg" placeholder="500" />
-					</div>
+						<div class="input-group">
+							<span class="input-group-addon">$</span>
+							<input name="price" required type="number" class="form-control input-hg" placeholder="500" />
+						</div>
 					</div>
 
 					<div class="row">
-					<h6 class="col-md-12">
-						¿describe tu recompensa (140 ccaracteres)?
+						<h6 class="col-md-12">
+						¿describe tu accion (140 ccaracteres)?
 					</h6>
-					<div class="input-group">
-					  <span class="input-group-addon">
+						<div class="input-group">
+							<span class="input-group-addon">
 					  	<i class="fa fa-commenting-o" aria-hidden="true"></i>
 					  </span>
-					  <textarea name="desc" required class="form-control input-hg" placeholder="te daremos nuestro corazón"></textarea>
-					</div>
+							<textarea name="desc" required class="form-control input-hg" placeholder="te daremos nuestro corazón"></textarea>
+						</div>
 					</div>
 
 					<div class="row">
-					<h6 class="col-md-12">
-						¿Cuantas recompensas puedes ofrecer?
+						<h6 class="col-md-12">
+						¿Cuantas acciones puedes ofrecer?
 					</h6>
-					<div class="input-group">
-					  <span class="input-group-addon">
+						<div class="input-group">
+							<span class="input-group-addon">
 					  	<i class="fa fa-stack-overflow" aria-hidden="true"></i>
 					  </span>
-					  <input name="quantity" type="number" required class="form-control input-hg" placeholder="10"/>
-					</div>
+							<input name="quantity" type="number" required class="form-control input-hg" placeholder="10" />
+						</div>
 					</div>
 
 					<div class="row">
-					<h6 class="col-md-12">
-						¿En que fecha aproximada entregaras esta recompensa?
+						<h6 class="col-md-12">
+						¿En que fecha aproximada entregaras esta accion?
 					</h6>
-					<div class="input-group">
-					  <span class="input-group-addon">
+						<div class="input-group">
+							<span class="input-group-addon">
 					  	<i class="fa fa-calendar" aria-hidden="true"></i>
 					  </span>
-					  <input name="deliver_date" type="date" required class="form-control input-hg" placeholder="MM/YYYY"/>
-					</div>
+							<input name="deliver_date" type="date" required class="form-control input-hg" placeholder="MM/YYYY" />
+						</div>
 					</div>
 
 					<br>
-					<input {%if project.publish%}disabled{%endif%}  class="btn btn-hg btn-success" type="submit" value="Guardar">
+					<input {%if project.publish%}disabled{%endif%} class="btn btn-hg btn-success" type="submit" value="Guardar">
 
-					</div> <!-- offset-->
+				</div>
+				<!-- offset-->
 
 			</form>
 
 
-    </div>
-  </div>
+		</div>
+	</div>
 </div>
 
 
 <script type="text/javascript">
-
-	$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+	$(function() {
+		$('[data-toggle="tooltip"]').tooltip()
+	})
 </script>
 
 <script>
+	function get_reward(id) {
+		$.ajax({
+			url: "/projects/json/" + id + "/",
+			dataType: 'json',
+			success: function(r) {
+				console.log(r);
+				var title = r[0].fields.title
+				var price = r[0].fields.price
+				var desc = r[0].fields.desc
+				var quantity = r[0].fields.quantity
+				var deliver_date = r[0].fields.deliver_date
+				var pk = r[0].pk
+				$("input[name='title']").val(title);
+				$("input[name='price']").val(price);
+				$("textarea[name='desc']").val(desc);
+				$("input[name='quantity']").val(quantity);
+				$("input[name='deliver_date']").val(deliver_date);
+				$("input[name='pk']").val(pk);
 
+			},
+			error: function(e) {
+				console.log(e);
+			}
+		});
+	}
 
-function get_reward(id){
-	$.ajax({
-		url:"/projects/json/"+id+"/",
-		dataType: 'json',
-		success:function(r){
-			console.log(r);
-			var title = r[0].fields.title
-			var price = r[0].fields.price
-			var desc = r[0].fields.desc
-			var quantity = r[0].fields.quantity
-			var deliver_date = r[0].fields.deliver_date
-			var pk = r[0].pk
-			$("input[name='title']").val(title);
-			$("input[name='price']").val(price);
-			$("textarea[name='desc']").val(desc);
-			$("input[name='quantity']").val(quantity);
-			$("input[name='deliver_date']").val(deliver_date);
-			$("input[name='pk']").val(pk);
-
-		},
-		error:function(e){
-			console.log(e);
-		}
+	$('.edita').on('click', function() {
+		var id = $(this).attr('data-reward');
+		console.log(id);
+		get_reward(id);
 	});
-}
-
-$('.edita').on('click',function(){
-	var id = $(this).attr('data-reward');
-	console.log(id);
-	get_reward(id);
-});
 
 
-$('#agrega').on('click',function(){
-	$('#reward').find("input[name='title'], textarea").val("");
-	$('#reward').find("input[name='price']").val("");
-	$('#reward').find("input[name='desc']").val("");
-	$('#reward').find("input[name='quantity']").val("");
-	$('#reward').find("input[name='deliver_date']").val("");
+	$('#agrega').on('click', function() {
+		$('#reward').find("input[name='title'], textarea").val("");
+		$('#reward').find("input[name='price']").val("");
+		$('#reward').find("input[name='desc']").val("");
+		$('#reward').find("input[name='quantity']").val("");
+		$('#reward').find("input[name='deliver_date']").val("");
 
-	$('#reward').find('input[type="submit"]').val('Guardar');
-});
-
+		$('#reward').find('input[type="submit"]').val('Guardar');
+	});
 </script>
 
 {%endblock content%}
-
-
-
-
 
 
 <form id="nuevo" class="row panel panel-default" action="." method="post">
