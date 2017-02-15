@@ -62,7 +62,7 @@
 	}
 	.monactive{
 		color :#48c9b0;
-		font-size: 2.5rem;
+		font-size: 2rem;
 	}
 
 </style>
@@ -114,41 +114,75 @@
 			<div class="col-lg-4">
 				
 				<div class="tile filter">
-					<h3 class="mcat">Categorias:</h3>
-
-					<h4><a class="btn btn-block btn-lg mbtn " href="{%url 'manager:cat' 'tecnologia'%}"><i class="fa fa-cogs" aria-hidden="true"></i><span>Tecnología</span></a></h4>
-
-					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'comunidad'%}"><i class="fa fa-users" aria-hidden="true"></i><span>Comunidad</span></a></h4>
-
-					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'medio-ambiente'%}"> <i class="fa fa-pagelines" aria-hidden="true"></i><span>Medio Ambiente</span></a></h4>
-
-					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'arte'%}"><i class="fa fa-paint-brush" aria-hidden="true"></i><span>Arte</span></a></h4>
-
-					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'diseno'%}"><i class="fa fa-ravelry" aria-hidden="true"></i><span>Diseño</span></a></h4>
-
-					<h4><a class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'educacion'%}"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Educación</span></a></h4>
 					
-					<h4><a class="btn btn-block btn-lg mbtn" href="/manager"><i class="fa fa-tasks" aria-hidden="true"></i><span>Todos</span></a></h4>
+					<h3 class="mcat">Categorias:</h3>
+					
+					<h4><a id="l1" class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'tecnologia'%}"><i class="fa fa-cogs" aria-hidden="true"></i><span>Tecnología</span></a></h4>
+					
+
+					<h4><a id="l2" class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'comunidad'%}"><i class="fa fa-users" aria-hidden="true"></i><span>Comunidad</span></a></h4>
+
+					<h4><a id="l3" class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'medio-ambiente'%}"> <i class="fa fa-pagelines" aria-hidden="true"></i><span>Medio Ambiente</span></a></h4>
+
+					<h4><a id="l4" class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'arte'%}"><i class="fa fa-paint-brush" aria-hidden="true"></i><span>Arte</span></a></h4>
+
+					<h4><a id="l5" class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'diseno'%}"><i class="fa fa-ravelry" aria-hidden="true"></i><span>Diseño</span></a></h4>
+
+					<h4><a id="l6" class="btn btn-block btn-lg mbtn" href="{%url 'manager:cat' 'educacion'%}"><i class="fa fa-graduation-cap" aria-hidden="true"></i><span>Educación</span></a></h4>
+					
+					<h4><a id="l7" class="btn btn-block btn-lg mbtn" href="/manager"><i class="fa fa-tasks" aria-hidden="true"></i><span>Todos</span></a></h4>
 					<hr class="mcat">
 					<div class="row mcat">
 						<div class="col-xs-4">
-							<h4><a class="btn btn-block btn-lg btn-inverse" href="{%url 'manager:stat' 'APROBADO'%}"><i class="fa fa-check-circle" aria-hidden="true"></i><br><span>Aprobados</span></a></h4>
+							<h4><a id="l8" class="btn btn-block btn-lg btn-inverse" href="{%url 'manager:stat' 'APROBADO'%}"><i class="fa fa-check-circle" aria-hidden="true"></i><br><span>Aprobados</span></a></h4>
 						</div>
 						<div class="col-xs-4">
-							<h4><a class="btn btn-block btn-lg btn-inverse" href="{%url 'manager:stat' 'REVISION'%}"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><br><span>Revisión</span></a></h4>
+							<h4><a id="l9" class="btn btn-block btn-lg btn-inverse" href="{%url 'manager:stat' 'REVISION'%}"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><br><span>Revisión</span></a></h4>
 						</div>
 						<div class="col-xs-4">
-							<h4><a class="btn btn-block btn-lg btn-inverse" href="{%url 'manager:stat' 'RECHAZADO'%}"><i class="fa fa-times-circle" aria-hidden="true"></i><br><span>Rechazados</span></a></h4>
+							<h4><a id="l10" class="btn btn-block btn-lg btn-inverse" href="{%url 'manager:stat' 'RECHAZADO'%}"><i class="fa fa-times-circle" aria-hidden="true"></i><br><span>Rechazados</span></a></h4>
 						</div>
 					</div>
-
-
+					
+					<h3 id="hola">hola mama</h3>
 				</div>
 			</div>
 		</div>
 	</section>	
+<script type="text/javascript">
+	var a = window.location.pathname;
+	console.log(a);
+	if(a == '/manager/tecnologia/'){
+		document.getElementById('l1').className += " monactive";
+	}
+	else if(a == '/manager/comunidad/'){
+		document.getElementById('l2').className += " monactive";
+	}
+	else if(a == '/manager/medio-ambiente/'){
+		document.getElementById('l3').className += " monactive";
+	}
+	else if(a == '/manager/arte/'){
+		document.getElementById('l4').className += " monactive";
+	}
+	else if(a == '/manager/diseno/'){
+		document.getElementById('l5').className += " monactive";
+	}
+	else if(a == '/manager/educacion/'){
+		document.getElementById('l6').className += " monactive";
+	}
+	else if(a == '/manager/'){
+		document.getElementById('l7').className += " monactive";
+	}
+	else if(a == '/manager/status/APROBADO/'){
+		document.getElementById('l8').className += " monactive";
+	}
+	else if(a == '/manager/status/REVISION/'){
+		document.getElementById('l9').className += " monactive";
+	}
+	else if(a == '/manager/status/RECHAZADO/'){
+		document.getElementById('l10').className += " monactive";
+	}
 
-		
-	
+</script>
 
 {%endblock content%}
