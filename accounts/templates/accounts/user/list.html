@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+	<h1>Nuestra comunidad</h1>
+	<div id="people-list">
+		{%for u in users%}
+		<div class="user">
+			<a href="{{u.get_absolute_url}}">
+				{%if u.profile.img%}
+				<img width="100" src="{{u.profile.img.url}}">
+				{%else%}
+				<img class="img_perfil redonda" width="80" src="https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/girl-512.png">
+				{%endif%}
+			</a>
+			<div class="info">
+				<a href="{{u.get_absolute.url}}">
+					{{u.get_full_name}}
+				</a>
+			</div>
+		</div>
+		{%endfor%}
+	</div>
+{%endblock content%}

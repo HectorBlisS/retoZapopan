@@ -53,7 +53,7 @@
 			</p>
 			<p>
 				<i class="fa fa-wifi" aria-hidden="true"></i>
-				Tiene 108 seguidores
+				Tienes 108 seguidores
 			</p>
 		</div>
 		</div>
@@ -61,52 +61,65 @@
 
 
 		<div class="muro col-sm-8">
+
+			<form action="{%url 'actions:new_post'%}" method="post" class="row post-muro">
+				{%csrf_token%}
+				<input name="body" class="col-xs-12 input-muro" type="text">
+				{%if request.user.profile.img%}
+				<img src="{{request.user.profile.img.url}}">
+				{%else%}
+				<img class="img_perfil redonda"  src="https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/girl-512.png">
+				{%endif%}
+
+				<div>
+					<input class="btn btn-primary" type="submit">
+				</div>
+				
+			</form>
+
 			<div class="list-group">
 
+	{%for a in actions%}
 			<div class="panel-body">
 				
-				  	<a href="{{a.get_absolute_url}}" class="list-group-item">
+				  	<a href="{{a.target.get_absolute_url}}" class="list-group-item">
 
-				  		<img width="80" src="{{request.user.profile.img.url}}">
-				  		<span>Bliss publico un post</span>
-				  		<span>"Todo un reto"</span>
+				  		{%if a.user.profile.img%}
+				  		<img width="80" src="{{a.user.profile.img.url}}">
+				  		{%else%}
+				  		<img class="img_perfil redonda" width="80" src="https://cdn3.iconfinder.com/data/icons/rcons-user-action/32/girl-512.png">
+				  		{%endif%}
+
+				  		<span>{{a.user}}</span>
+				  		<span>{{a.verb}}</span>
 				  		<p class="mini">
 				  			{%with p=request.user.projects.last%}
-				  			hace {{p.date|timesince}}
+				  			hace {{a.created|timesince}}
 				  			{%endwith%}
 				  		</p>
 				  		<p style="border-left:solid 3px green;">
-				  			<h6>Todo un reto</h6>
-				  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				  			tempor incididunt ut labore et dolore magna aliqua...</p>
+				  			<h6>{{a.target}}</h6>
+				  			<span>
+				  				{%if a.target%}
+				  				{{a.target.body}}
+
+				  				{%endif%}
+
+				  				{%if a.target.profile%}
+			
+				  				<img width="80" src="{{a.target.profile.img.url}}">
+
+				  				{%endif%}
+				  			</span>
+
 				  		</p>
 
 
 				  	</a>
 				
 			</div>
+	{%endfor%}
 
-
-			<div class="panel-body">
-				  	<a href="{{a.get_absolute_url}}" class="list-group-item">
-
-				  		<img width="80" src="{{request.user.profile.img.url}}">
-				  		<span>Bliss publico un post</span>
-				  		<span>"Todo un reto"</span>
-				  		<p class="mini">
-				  			{%with p=request.user.projects.last%}
-				  			hace {{p.date|timesince}}
-				  			{%endwith%}
-				  		</p>
-				  		<p style="border-left:solid 3px green;">
-				  			<h6>Todo un reto</h6>
-				  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				  			tempor incididunt ut labore et dolore magna aliqua...</p>
-				  		</p>
-
-
-				  	</a>
-			</div>
 
 
 
@@ -121,7 +134,7 @@
 			<div class="panel-body">
 				<div class="list-group">
 				  	{%for p in request.user.projects.all%}
-				  	<a href="{{p.get_absolute_url}}" class="list-group-item">
+				  	<a href="{{p.get_absolute_url_public}}" class="list-group-item">
 					    <h6 class="list-group-item-heading">{{p.name}}</h6>
 					    <div class="progress">
 						  <div class="progress-bar progress-bar-success" style="width: 10%;"></div>		 
@@ -145,8 +158,8 @@
 
 
 
-		<div class="perro">
-			<h2>akese perro!</h2>
+		<div class="perro col-sm-8 centrado">
+			 <a href="#!" class="list-group-item list-group-item-danger">aún no haz fondeado ningun proyecto</a>
 		</div>
 
 
