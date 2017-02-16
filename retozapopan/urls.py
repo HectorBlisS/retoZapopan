@@ -16,6 +16,8 @@ from django.conf import settings
 # muro
 from muro import urls as muroUrls
 from actions import urls as actionsUrls
+# Actualizaciones
+from actualizaciones import urls as acUrls
 
 
 urlpatterns = [
@@ -47,6 +49,9 @@ urlpatterns = [
 
     url(r'^actions/',
         include(actionsUrls, namespace="actions")),
+
+    url(r'^actualizaciones/',
+        include(acUrls, namespace="actualizaciones")),
 
     #Django Admin
     url(r'^admin/', admin.site.urls),
