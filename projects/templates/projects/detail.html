@@ -141,12 +141,6 @@
 				    	</div>
 				    </div> 
 
-
-
-
-
-
-
 				    <div role="tabpanel" class="tab-pane" id="settings">
 				    	<div class='panel'>
 				    		<div class='row'>
@@ -166,7 +160,14 @@
 				    		</div>
 				    	</div>
 				    </div>
-				    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+				    <div role="tabpanel" class="tab-pane" id="messages">
+				    	<div id="fb-root"></div>
+
+				
+
+					<div class="fb-comments" data-href="http://zapopan.fixter.org/{{request.path}}" data-width="100%" data-numposts="5"></div>
+			</div>
+				    </div>
 				   
 				   <div role="tabpanel" class="tab-pane" id="accionista">...</div>
  		 			</div> 
@@ -225,4 +226,13 @@
 		$('.detail_cuerpo#'+oculto).slideToggle();
 	});
 </script>
+				<script>
+					(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8&appId=694502364033651";
+					fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));
+				</script>
 {%endblock content%}
