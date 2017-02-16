@@ -163,11 +163,11 @@
 	width: 0;
 }
 .detail_collapse::after{
-			border-color: solid transparent;
-			border-right-color:white; 
-			border-width:10px; 
-			margin-top: -10px;
-		}
+	border-color: solid transparent;
+	border-right-color:white; 
+	border-width:10px; 
+	margin-top: -10px;
+}
 .detail_collapse::before{
 			border-color: solid transparent;
 			border-right-color:#BDC3C7; 
@@ -183,7 +183,6 @@
 .vertical-center {
   min-height: 80px;  /* Fallback for browsers do NOT support vh unit */
   /*min-height: 100vh;*/ /* These two lines are counted as one :-)       */
-
   display: flex;
   align-items: center;
 }
@@ -212,15 +211,15 @@
 	margin-bottom:10px;
     background-color: #e74c3c;
 }
-.cita input{
+/*.cita input{
 	margin:0;
 	border-radius:10px;
 	border:1px solid #BDC3C7;
 	height:30px;
 	width:30%;
-}
-.cita{
-}
+}*/
+
+/*Medias*/
 @media(max-width:440px){
 	.desc_accion p{
 		font-size:12px;
@@ -232,7 +231,6 @@
 		width:50%;
 		margin-left:25%;
 	}
-
 	.proj_tittle{
 		text-align:center;
 	}
