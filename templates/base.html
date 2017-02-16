@@ -139,7 +139,7 @@
                 {%for a in my_actions%}
                 <a href="{{a.user.get_absolute_url}}">
                 <li>
-                  <img class="redonda" width="50" src="{{a.user.profile.img.url}}">
+                  <img class="redonda" width="50" src="{{a.user.profile.img.url}}" onError="this.onerror=null;this.src='http://www.lucas5.com/img/procesoCandidatos/sin.png';">
                   <span style="position:relative">
                     
                     {%if a.verb == "está siguiendo a"%}
