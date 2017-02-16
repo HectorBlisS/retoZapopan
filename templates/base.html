@@ -20,6 +20,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Dosis|Lato|Comfortaa|Poiret+One" rel="stylesheet">
 
 
     <!-- Fa fa icons-->
@@ -68,6 +69,11 @@
     <ul class="nav navbar-nav">
       <li {%if nav_section == 'explorar' %} class="active" {%endif%} ><a href="{%url 'projects:categoria' 'prro'%}">Explorar</a></li>
       <li {%if nav_section == 'new' %} class="active" {%endif%} ><a href="{%url 'projects:new'%}">Publica tu Proyecto</a></li>
+      {% if request.user.is_staff %}
+      <li><a href="{%url 'manager:manage'%}">Manager</a></li>
+      {%endif%}
+      
+      
     </ul>
 
     {%if nav_section == "explorar"%}

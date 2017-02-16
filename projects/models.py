@@ -1,31 +1,31 @@
 from django.db import models
 from django.contrib.auth.models import User
 # from django.urls import reverse
-#django 1.9:
+# django 1.9:
 from django.core.urlresolvers import reverse
 
 from taggit.managers import TaggableManager
 
-
 STATUS = (
-    ('REVISION', 'REVISION'), 
-    ('APROBADO', 'APROBADO'), 
+    ('REVISION', 'REVISION'),
+    ('APROBADO', 'APROBADO'),
     ('RECHAZADO', 'RECHAZADO'))
-class Project(models.Model):
 
+
+class Project(models.Model):
     name = models.CharField(max_length=250)
     desc = models.TextField(blank=True, null=True)
     user = models.ForeignKey(User, related_name="projects", blank=True, null=True)
     goal = models.CharField(max_length=140)
     date = models.DateTimeField(auto_now=True, blank=True, null=True)
     img = models.ImageField(upload_to="projects/images", blank=True, null=True)
-    video = models.CharField(max_length=500, blank=True,null=True)
+    video = models.CharField(max_length=500, blank=True, null=True)
     publish = models.BooleanField(default=False)
     tags = TaggableManager()
     status = models.CharField(max_length=100, choices=STATUS, default="REVISION", null=True, blank=True)
 
     def get_absolute_url_public(self):
-        return reverse('dash:detail', kwargs={'pk':self.pk})
+        return reverse('dash:detail', kwargs={'pk': self.pk})
 
     def get_absolute_url(self):
         return reverse('projects:detail', args=[self.pk])
@@ -33,11 +33,11 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
-class Reward(models.Model):
 
+class Reward(models.Model):
     project = models.ForeignKey(Project, related_name='rewards')
     title = models.CharField(max_length=250)
-    price = models.DecimalField(decimal_places=2,max_digits=10)
+    price = models.DecimalField(decimal_places=2, max_digits=10)
     desc = models.TextField()
     quantity = models.IntegerField()
     deliver_date = models.DateField()
@@ -50,17 +50,27 @@ class Reward(models.Model):
         return self.title
 
 
+class Acciones(models.Model):
+    project = models.ForeignKey(Project, related_name="acciones")
+    title = models.CharField(max_length=250)
+    price = models.DecimalField(decimal_places=2, max_digits=10)
+    desc = models.TextField()
+    quantity = models.IntegerField()
+    deliver_date = models.DateField()
+    buyers = models.ManyToManyField(User, related_name="buyerss")
+
+
 class Comments(models.Model):
     user = models.ForeignKey(User, related_name='comments')
     comment = models.TextField()
     date = models.DateTimeField(auto_now=True)
 
+
 class Image(models.Model):
     img = models.ImageField(upload_to="projects/images")
-    project = models.ForeignKey(Project,related_name="images")
+    project = models.ForeignKey(Project, related_name="images")
+
 
 class NewProject(models.Model):
     name = models.CharField(max_length=250, blank=True, null=True)
     goal = models.DecimalField(max_digits=7, decimal_places=2, default=1, blank=True, null=True)
-
-
