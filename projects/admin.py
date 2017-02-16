@@ -8,3 +8,4 @@ from .models import *
 
 admin.site.register(Project)
 admin.site.register(Reward)
+admin.site.register(Acciones)

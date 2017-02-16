@@ -15,6 +15,9 @@ from django.core import serializers
 
 from taggit.models import Tag
 
+# traemos el util para crear acciones
+from actions.utils import create_action
+
 
 
 class Explorar(ListView):
@@ -61,6 +64,7 @@ class NewProject(View):
 			np.user = request.user
 			np.save()
 			messages.success(request,"Tu proyecto fué creado con éxito")
+			create_action(request.user, "creó un nuevo proyecto", np)
 			return redirect('dash:dash')
 		else:
 			messages.error(request,"Algo malo pasó U_U intentalo de nuevo")

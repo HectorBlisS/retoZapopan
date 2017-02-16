@@ -10,9 +10,14 @@ from django.contrib import messages
 # Create your views here.
 class ManageView(View):
 	
-	def get(self, request, cat=None):
+	def get(self, request, cat=None, status=None):
 		template_name = 'manager/list.html'
-		if cat:
+		cats = Tag.objects.all()
+
+
+		if status:
+			projects = Project.objects.all().filter(status=status)	
+		elif cat:
 			projects = Project.objects.all().filter(tags__name__in=[cat])
 		else:
 			projects = Project.objects.all()
@@ -20,6 +25,7 @@ class ManageView(View):
 
 		context={
 		'projects': projects,
+		'cats':cats
 		}
 
 		return render(request, template_name, context)

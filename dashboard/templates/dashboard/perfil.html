@@ -134,7 +134,7 @@
 			<div class="panel-body">
 				<div class="list-group">
 				  	{%for p in request.user.projects.all%}
-				  	<a href="{{p.get_absolute_url}}" class="list-group-item">
+				  	<a href="{{p.get_absolute_url_public}}" class="list-group-item">
 					    <h6 class="list-group-item-heading">{{p.name}}</h6>
 					    <div class="progress">
 						  <div class="progress-bar progress-bar-success" style="width: 10%;"></div>		 
