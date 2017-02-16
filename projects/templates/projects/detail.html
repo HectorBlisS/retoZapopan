@@ -126,18 +126,27 @@
 				</div>
 				<div role="tabpanel" class="tab-pane" id="profile">
 				   <div class='panel space'>
+				   	{%for a in project.updates.all%}
 				    	<div class='row'>
 				    		<div class='col-lg-2 col-md-3 col-sm-4 col-xs-4 date_act vertical-center'>
-				    			<span>15/02/2017</span>
+				    			<span>hace {{a.created|timesince}}</span>
 				    		</div>
 				    		<div class='col-lg-10 col-md-9 col-sm-8 col-xs-8 border_cuer detail_act '>
 				    			<div class='detail_collapse'>
-				    				<h6 class='detail_header'>Ya tenemos pagina web!<a data-target='actualizar' href="#!"><i class="fa fa-arrow-down" aria-hidden="true"></i>	</a>
+				    				<h6 class='detail_header'>
+				    					{{a.title}}
+				    					<a data-target='{{a.id}}' href="#!"><i class="fa fa-arrow-down" aria-hidden="true"></i>	</a>
 				    				</h6>
-				    				<p id='actualizar' class='detail_cuerpo'>A partir de estudios de mercado, hemos cambiado la sede de la escuela de hackers a la ciudad de Guadalaja, Jalisco. Los costos para la realización del proyecto se mantienen constantes, por lo que con el fondeo podremos llegar a la meta.</p>
+				    				<p id='{{a.id}}' class='detail_cuerpo'>{{a.body}}
+				    				</p>
 				    			</div>
 				    		</div>
 				    	</div>
+				    	{%empty%}
+				    		<div class="perro col-sm-8 centrado">
+							 <a href="#!" class="list-group-item list-group-item-danger">aún no tienes actualizaciones</a>
+							</div>
+			    		{%endfor%}
 				    </div>
 				</div> 
 				<div role="tabpanel" class="tab-pane" id="settings">
