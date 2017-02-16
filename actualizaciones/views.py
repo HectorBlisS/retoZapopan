@@ -8,7 +8,8 @@ from django.contrib import messages
 
 # crear actions
 from actions.utils import create_action
-
+# Enviar mails
+from mailing.utils import Mailing
 
 
 
@@ -17,7 +18,7 @@ class NewUpdate(CreateView):
 	template_name = 'actualizaciones/new.html'
 	fields = ['title','body','img']
 	project = None
-
+	mailin = Mailing()
 	def get_success_url(self):
 		return reverse_lazy('actualizaciones:new', args=[self.project.id])
 
@@ -41,4 +42,8 @@ class NewUpdate(CreateView):
 	def form_valid(self, form):
 		messages.success(self.request, "Tu actualización se ha publicado con éxito")
 		create_action(self.request.user, 'ha publicado una actualizacion de su proyecto',self.project)
+		self.mailin.update(project=self.project)
+			# print('se pudo')
+		# except:
+		# 	print('no se pudo')
 		return super(NewUpdate, self).form_valid(form)  
