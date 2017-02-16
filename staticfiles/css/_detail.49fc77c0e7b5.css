@@ -1,0 +1,243 @@
+.proj_tittle{
+	font-family: 'Comfortaa', cursive;
+	text-align:left;
+}
+.detail_user{
+	display:inline-block;
+	margin:2% 2%;
+	width:100%;
+}
+.inf_project{
+	font-family: 'Poiret One', cursive;
+	padding-top:3%;
+	padding-bottom:3%;
+
+}
+.suscriptores, .patrocinadores, .dinero, .fechas{
+	margin:2px 0 6px 0;
+	font-family: 'Poiret One', cursive;
+}
+.donador{
+	width:90%;
+	height:auto;
+	margin:0 5%;
+}
+.social{
+	display:flex;
+}
+.centr{
+	margin:0 auto;
+	filter: grayscale(100%);
+}
+.text_gris{
+	text-align:center;
+}
+.fondeador{
+	margin-top:15%;
+}
+.descripcion{
+	padding:3% 2%;
+}
+.detail_reward{	
+	height:150px;
+	width:100%;
+	margin:0;
+	padding:0;
+	background-size:cover;
+	background-image:url('https://images.pexels.com/photos/157879/gift-jeans-fashion-pack-157879.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb');	
+}
+.well_s{
+	padding:0;
+	min-height: 20px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    position: relative;
+}
+.text_rew{
+	color:white;
+	position:absolute;
+}
+.rew{
+	position:relative;
+	top:120px;
+	font-size:30px;
+	margin-left:20px;
+}
+.reward h5{
+	margin:0;
+}
+.reward span{
+	margin:0;
+
+}
+.btn_rew{
+	background-color:#3498db;
+	border-radius:10px;
+}
+
+.cubierta{
+	background: transparent;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
+	transition: all 0.5s ease;
+	/*background-color: rgba(52,152,219,0.5)*/
+}
+.cubierta:hover{
+	background: red;
+}
+.ing_number{
+	height:auto;
+	background-color:white;
+	padding-bottom:20px;
+}
+.ing_number h4{
+	margin-left: 20px;
+	font-size:18px;
+}
+.ing_number input{
+	border-radius:5px;
+	border:1px solid #e3e3e3;
+	width:50%;
+	margin-left:20%;
+}
+.ing_number span{
+	margin-left:4px;
+}
+.btn_contribuir{
+	width:40%;
+	margin-left:30%;
+	font-size:13px;
+	padding:4px 2px;
+	margin-top:15px;
+}
+.detail_act{
+	padding:2%;
+		border:1px solid transparent;
+			border-left-color:grey;
+}
+.img_act{
+	margin:0 auto;	
+}
+.inversion{
+
+}
+.dotted{
+	border:.2px dotted transparent;
+	border-bottom-color:#B1CBD4;
+	
+}
+.detail_collapse{
+	border:1px solid #BDC3C7;
+	height:auto;
+	margin-left: 20px;
+	position: relative;
+	padding:1px;
+	box-sizing:border-box;
+	padding-left: 40px;
+}
+.detail_collapse p, h6{
+	font-size:18px;
+}
+.space{
+	padding-top:5%;
+}
+.detail_collapse .detail_cuerpo{
+	display:none;
+	padding: 20px;
+}
+.detail_collapse::after, .detail_collapse::before{
+	right: 100%;
+	top:24px;
+	border: solid transparent;
+	content: " ";
+	position: absolute;
+	height: 0;
+	width: 0;
+}
+.detail_collapse::after{
+	border-color: solid transparent;
+	border-right-color:white; 
+	border-width:10px; 
+	margin-top: -10px;
+}
+.detail_collapse::before{
+			border-color: solid transparent;
+			border-right-color:#BDC3C7; 
+			border-width:11px; 
+			margin-top: -11px;
+		}
+.border.cuer{
+			border: 1px solid transparent;
+			border-left-color:grey;
+			height:40vh;
+
+}
+.vertical-center {
+  min-height: 80px;  /* Fallback for browsers do NOT support vh unit */
+  /*min-height: 100vh;*/ /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
+.space p, h6{
+	font-size:15px;
+}
+.detail_collapse i {
+	float:right;
+	margin-right: 20px;
+}
+.desc_accion{
+	padding:4%;
+} 
+.desc_accion p{
+	text-align:justify;
+	font-size:15px;
+}
+.btn_cita{
+	width:30%;
+	border:none;
+	color:white;
+	border-radius:10px; 
+	font-size:15px;
+	margin-left:35%;
+	margin-top:10px;
+	margin-bottom:10px;
+    background-color: #e74c3c;
+}
+/*.cita input{
+	margin:0;
+	border-radius:10px;
+	border:1px solid #BDC3C7;
+	height:30px;
+	width:30%;
+}*/
+
+/*Medias*/
+@media(max-width:440px){
+	.desc_accion p{
+		font-size:12px;
+	}
+	.img_accion{
+		width:100px;
+	}
+	.btn_cita{
+		width:50%;
+		margin-left:25%;
+	}
+	.proj_tittle{
+		text-align:center;
+	}
+	.btn_a {
+		margin-left:70px;
+	}
+	.detail_collapse p, h6{
+		font-size:11px;
+	}
+}

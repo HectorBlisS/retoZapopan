@@ -1,6 +1,9 @@
 @import "_dashboard.css";
 @import "_projects.css";
 @import "_index.css";
+@import "_manager.css";
+@import "_acciones.css";
+@import "_detail.css";
 
 
 body{
@@ -31,4 +34,36 @@ li.error{
   background: url(https://s3.eu-central-1.amazonaws.com/cloudpro/sas-smart.com/images/loading.gif) center no-repeat #fff;
 
 }
+.noti{
+	position: relative;
+}
+.notify{
+	position: absolute;
+	top: 55px;
+	background: white;
+	display: block;
+	z-index: 1;
+	left: -200px;
+	width: 400px;
+}
+.notify ul{
+	list-style: none;
+	padding: 10px 20px 10px 20px;
+	
+}
+.notify ul li:hover{
+	background: rgba(0,0,0,0.2);
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  position: absolute;
+  top: -5px;
+  left: 56%;
+  border-bottom: 5px solid white;
+}
+
 
