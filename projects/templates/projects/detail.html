@@ -3,174 +3,210 @@
 
 {%block content%}
 
-<section class="contenedor well well-sm">
-
-<div class="centrado">
-	<h2>{{project.name}}</h2>
-	<a class="btn btn-info btn-xs" type="button">
-		<span class="fui-calendar"></span>
-		{{project.date | date:"d, M Y"}}
-	</a>
-	{%for t in project.tags.all%}
-	<a href="{%url 'projects:categoria' t.slug%}" class="btn btn-info btn-xs" type="button">
-		<span class="fui-tag"></span>
-		{{t.name}}
-	</a>
-	{%endfor%}
-	
-</div>
-<br>
-<article class="row panel-body">
-
-
-<div style="height:auto;" class="col-sm-8">
-
-	{%if project.video%}
-	<iframe id="vidPrev" width="100%" height="508" src="{{project.video}}" frameborder="0" allowfullscreen></iframe>
-	{%else%}
-		{%if project.img%}
-			<img class="img-responsive" src="{{project.img.url}}">
-		{%else%}
-			<img class="img-responsive" src="http://www.ciiecca.org.ar/wp-content/themes/openmind/img/no_image.png">
-		{%endif%}
-	{%endif%}
-</div>
-
-<div class="col-sm-4 panel">
-
-	<div class="user row panel-body">
-		<div class="col-xs-3">
-			{%if project.user.profile.img%}
-			<img class="foto_perfil" src="{{project.user.profile.img.url}}">
+<section class=" contenedor well well-sm">
+	<div class="row detail_user">
+		<div class='col-lg-7'>
+			<h2 class='proj_tittle'>{{project.name}}</h2>
+			<a class="btn btn-info btn-xs" type="button">
+				<span class="fui-calendar"></span>
+				<!--{{project.date | date:"d, M Y"}}-->
+				hace {{project.date|timesince}}
+			</a>
+			{%for t in project.tags.all%}
+			<a href="{%url 'projects:categoria' t.slug%}" class="btn btn-info btn-xs" type="button">
+				<span class="fui-tag"></span>
+				{{t.name}}
+			</a>
+			{%endfor%}
+			
+		</div>
+		<div class='col-sm-4'>
+			<div class='fondeador'>
+				<div class="row">
+					<div class="col-lg-4 col-lg-offset-2">
+						{%if project.user.profile.img%}
+						<img class="centr foto_perfil" src="{{project.user.profile.img.url}}">
+						{%endif%}
+					</div>
+					<div  class="col-lg-6 text_gris">
+						<a href="{{project.user.get_absolute_url}}">
+						<span style='color:#90a4ae  ;'>{{project.user.get_full_name}}</span>
+						</a>
+						<div class="divider"></div>
+						<a style='color:#90a4ae; text-align:center;' href="mailto:{{project.user.email}}">{{project.user.email}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<article class="row panel-body">
+		<div  class=" img_vid col-sm-8">
+			{%if project.video%}
+			<iframe id="vidPrev" width="100%" height="520" src="{{project.video}}" frameborder="0" allowfullscreen></iframe>
+			{%else%}
+				{%if project.img%}
+					<img class="img-responsive" src="{{project.img.url}}">
+				{%else%}
+					<img class="img-responsive" src="http://www.ciiecca.org.ar/wp-content/themes/openmind/img/no_image.png">
+				{%endif%}
 			{%endif%}
 		</div>
-		<div class="col-xs-9">
-			<a href="{{project.user.get_absolute_url}}">
-			<span>{{project.user.get_full_name}}</span>
-			</a>
-			<div class="divider"></div>
-			<a href="mailto:{{project.user.email}}">{{project.user.email}}</a>
-		</div>
-	</div>
-	<br>
-	<div class="patrocinadores">
-		<h4 style="margin:0">15</h4>
-		<span>Patrocinadores</span>
-	</div>
-	<div class="dinero">
-		<h4 class="text-success" style="margin:0">$350 MXN</h4>
-		<span>De la meta de ${{project.goal}}</span>
-		<div class="progress">
-			<div class="progress-bar" style="width: 40%;"></div>
-		</div>
-	</div>
-	<div class="fechas">
-		<h4 class="text-danger" style="margin:0">30</h4>
-		<span>Días restantes</span>
-	</div>
-	<br>
-	<div class="cart">
-		<button class="btn btn-success">
-			Patrocinar este proyecto
-		</button>
-	</div>
-
-
-
-		<div class="social panel-body">
-		<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Comparte en Facebook">
-			<span class="fui-facebook"></span>
-		</div>
-		<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Comparte en Twitter">
-			<span class="fui-twitter"></span>
-		</div>
-		<div class="icon" data-togle="tooltip" data-placement="bottom" title="Comparte en Pinterest">
-			<span class="fui-pinterest"></span>
-		</div>
-		<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Copia el link">
-			<span class="fui-link"></span>
-		</div>
-	</div>
-
-</div>
-
-
-</article> <!-- row-->
-
-</section>
-
-<br>
-
-<section class="acerca contenedor">
-
-	<article class="row">
-
-
-		<div class="desc col-md-8 well">
-
-			{%autoescape off%}{{project.desc}}{%endautoescape%}
-
-		</div>
-
-		<div class="rewards col-md-4">
-
-			 {%for r in project.rewards.all%}
-			
-			<form action="{%url 'cart:cart_add' r.pk%}" method="post">
-			
-				{%csrf_token%}
-				<input type="hidden" name="quantity" value="1">
-				<input type="hidden" name="update" value="false">
-
-			<div class="well reward">
-				<p>Contribuir: </p>
-				<h6><span class="dineros" >$</span>{{r.price}}MXN</h6>
-				<h5>{{r.title}}</h5>
-				<p>{{r.desc}}</p>
-				<span class="dineros">Fecha aproximada de entrega: <span class="text-info">{{r.deliver_date|date:"M, Y"}}</span></span>
-				<br>
-				<span class="dineros">608 <span class="text-info">Adquiridos</span></span>
-				<div class="selected">Obtener esta recompensa</div>
+		<div class="col-sm-4 panel">
+			<div class='inf_project'>
+				<div class='suscriptores'>
+					<h4 style='margin:0'>235</h4>
+					<span>Suscriptores</span>
+				</div>
+				<div class="patrocinadores">
+					<h4 style="margin:0">15</h4>
+					<span>Patrocinadores</span>
+				</div>
+				<div class="dinero">
+					<span>Total recaudado</span>
+					<h4 class="text-success" style="margin:0">$90,000 MXN</h4>
+					<span>De la meta de ${{project.goal}}</span>
+					<div class="progress">
+						<div class="progress-bar" style="width: 90%;"></div>
+				</div>
 			</div>
-			</form>
-
-			{%endfor%}
-
-
 		</div>
+		<div class=" fechas">
+			<h4 class="text-success" style="margin:0">30</h4>
+			<span>Días restantes</span>
+		</div>
+		<br>
+		<div class="cart">
+			<button class="donador btn btn-warning">
+				Patrocinar este proyecto
+			</button>
+		</div>
+		<div class='icon_social'>
+			<div class="social panel-body">
+				<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Comparte en Facebook">
+					<span class="fui-facebook"></span>
+				
+			</div>
+			<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Comparte en Twitter">
+				<span class="fui-twitter"></span>
+			</div>
+			<div class="icon" data-togle="tooltip" data-placement="bottom" title="Comparte en Pinterest">
+				<span class="fui-pinterest"></span>
+			</div>
+			<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Copia el link">
+				<span class="fui-link"></span>
+			</div>
+		</div></div>
+	</article> <!-- row-->
+</section>
+<br>
+<section class="acerca contenedor">
+	<div class='row'>
+			<div class='col-md-8 well'>
+				  <!-- Nav tabs -->
+				  <ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descripción</a></li>
+				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Actualizaciones</a></li>
+				   
+				    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Como puedo ser accionista?</a></li>
+				  	 <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Comentarios</a></li>
+
+				  </ul>
+
+				  <!-- Tab panes -->
+				  <div class="tab-content">
+				    <div role="tabpanel" class="tab-pane active" id="home">
+				    	<article class="row">
+							<div class="descripcion panel">
+								{%autoescape off%}{{project.desc}}{%endautoescape%}
+							</div>					
+						</article>
+				    </div>
+				    <div role="tabpanel" class="tab-pane" id="profile">
+				    	<div class='panel space'>
+
+				    		<div class='row'>
+				    			<div class='col-lg-2 col-md-2 col-sm-4 col-xs-4 date_act vertical-center'>
+				    				<span>15/02/2017</span>
+				    			</div>
+				    			<div class='col-lg-10 col-md-8 col-sm-8 col-xs-8 border_cuer detail_act '>
+				    				<div class='detail_collapse'>
+				    				<h6 class='detail_header'>Ya tenemos pagina web!<a data-target='actualizar' href="#!"><i class="fa fa-arrow-down" aria-hidden="true"></i>	</a>
+				    				</h6>
+				    				<p id='actualizar' class='detail_cuerpo'>A partir de estudios de mercado, hemos cambiado la sede de la escuela de hackers a la ciudad de Guadalaja, Jalisco. Los costos para la realización del proyecto se mantienen constantes, por lo que con el fondeo podremos llegar a la meta.</p>
+				    				</div>
+				    			</div>
+				    		</div>
+				    		
+				    	</div>
+				    </div> 
 
 
 
 
 
 
-	</article>
 
+				    <div role="tabpanel" class="tab-pane" id="settings">
+				    	<div class='panel'>
+				    		<div class='row'>
+				    			<div class='col-lg-12'>
+				    				<div class='acciones_1 row'>
+				    					<div class='inversion col-lg-4'>
+				    						<p>20%</p>
+				    					</div>
+				    					<div class='col-lg-8'>
+				    						<p>Con una aportacion de $3,000.00 puedes convertirte en accionario de la escuela de HACKERS</p>
+				    					</div>
+				    				</div>
+				    			</div>
+				    			<div class='col-lg-12'>
+				    				
+				    			</div>
+				    		</div>
+				    	</div>
+				    </div>
+				    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+				   
+				   <div role="tabpanel" class="tab-pane" id="accionista">...</div>
+ 		 			</div> 
+ 		 	</div>
 
+		
+			<div class='col-md-4'>
+				<div class='well_s ing_number'>
+						<h4>Contribución libre</h4>
+						<input type="number" placeholder="mxn" name=""><span>Mxn</span>
+						<button class="btn_contribuir btn btn-danger">
+					Contribuir
+			</button>
+			{%for r in project.rewards.all%}
+				</div>
+				<div class="well_s ">
+			<!-- 	<div class='cubierta'></div> -->
 
-
+					<div class='detail_reward'>
+						<div class='text_rew'>
+							<div class='rew'>
+								<p>Contribuir: ${{r.price}}MXN</p>
+							</div>
+						</div>
+					</div>
+					<div class='reward'>
+						<h5>{{r.title}}</h5>
+						<p>{{r.desc}}</p>
+						<span class="dineros">Fecha aproximada de entrega: <span class="text-info">{{r.deliver_date|date:"M, Y"}}</span></span>
+						<br>
+						<span class="dineros">608 <span class="text-info">Adquiridos</span></span>
+						<div class="selected btn_rew btn-danger">Obtener esta recompensa</div>
+					</div>
+				</div>
+				{%endfor%}
+			</div> <!--row-->		
+	</div>
 
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 
 <script>
 	$('[data-toggle="tooltip"]').tooltip()
@@ -180,5 +216,13 @@
 	});
 
 	$('img').addClass('img-responsive');
+
+	</script>
+<script>
+	$('.detail_collapse a').click(function(){
+		console.log('putos');
+		var oculto = $(this).data('target');
+		$('.detail_cuerpo#'+oculto).slideToggle();
+	});
 </script>
 {%endblock content%}
