@@ -86,6 +86,19 @@
 				</li>
 			</a>
 
+			<a class="no-link relativo" href="{%url 'actualizaciones:new' project.pk%}">
+				<li class="{%if section == 'actualizaciones'%} todo-done {%endif%}">
+					<div class="todo-icon fui-upload"></div>
+					<div class="todo-content">
+						<h4 class="todo-name">
+							<strong>Actualizaciones</strong>
+						</h4> ¡Platícanos como va tu proyecto!
+					</div>
+				</li>
+
+				<img class="new-feature" src="http://cesabt.ac.in/images/new_blink.gif">
+			</a>
+
 		<a class="no-link" href="{%url 'dash:extra' project.pk%}">
 			<li class="{%if section == 'extra'%} todo-done {%endif%}">
 				<div class="todo-icon fui-plus-circle"></div>
