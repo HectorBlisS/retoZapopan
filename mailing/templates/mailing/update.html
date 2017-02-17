@@ -1,0 +1,71 @@
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
+    <tr>
+        <td align="center" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="80%" id="emailContainer">
+                <tr>
+                    <td align="center" valign="top">
+                        <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailHeader">
+                            <tr>
+                                <td align="center" valign="top" bgcolor="#34495E">
+                                    <img height="30px" src="http://vignette2.wikia.nocookie.net/gtawiki/images/9/9a/PlayStation_1_Logo.png/revision/latest?cb=20100130082645">
+                                </td>
+                                <td align="center" valign="top" bgcolor="#34495E">
+                                    <h5 style="padding-top:15px;color:white">Reto Zapopan</h5>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top">
+                        <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailBody">
+                            <tr>
+                                <td colspan="2" margin="0" bgcolor="#BDC3C7" align="center" valign="top">
+                                	<a style="color:white" href="{{project.get_absolute_url}}">
+                                		<h4>
+                                    El proyecto que sigues 
+                                    <span style="font-size:1.5rem;">{{project}}</span>
+                                    Ha publicado una actualización
+                                    </h4>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td margin="0" bgcolor="#BDC3C7" align="center" valign="top">
+                                	
+                                	<img width="200" src="https://images.pexels.com/photos/8704/pen-idea-bulb-paper.jpg?w=1260&h=750&auto=compress&cs=tinysrgbg">
+                                	
+                                </td>
+                                <td margin="0" bgcolor="#BDC3C7" align="center" valign="top">
+                                	<p>
+                                		{%autoescape off%}
+                                		{{project.desc}}
+                                		{%endautoescape%}
+                                	</p>
+                                </td>
+                            </tr>
+
+
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top">
+                        <table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailFooter">
+                            <tr>
+                                <td align="center" valign="top" bgcolor="#1ABC9C">
+                                    <img width="50" src="http://designmodo.github.io/Flat-UI/img/icons/svg/chat.svg">
+                                </td>
+                                <td align="center" valign="top" bgcolor="#1ABC9C">
+                                    <span style="color:white;margin-top:25px">Siguenos en redes sociales</span>
+                                </td>
+                                
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

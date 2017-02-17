@@ -7,7 +7,7 @@ class Home (View):
 	def get(self, request):
 		template_name= 'index.html'
 		context = {
-			'nav_section':'home'
+			'nav_section':'home',
 		}
 
 		return render(request, template_name, context)

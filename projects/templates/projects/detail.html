@@ -5,9 +5,9 @@
 
 <section class=" contenedor well well-sm">
 	<div class="row detail_user">
-		<div class='col-lg-7'>
+		<div class='col-lg-7 col-md-7 col-sm-7 col-xs-12'>
 			<h2 class='proj_tittle'>{{project.name}}</h2>
-			<a class="btn btn-info btn-xs" type="button">
+			<a class="btn_a btn btn-info btn-xs" type="button">
 				<span class="fui-calendar"></span>
 				<!--{{project.date | date:"d, M Y"}}-->
 				hace {{project.date|timesince}}
@@ -20,7 +20,7 @@
 			{%endfor%}
 			
 		</div>
-		<div class='col-sm-4'>
+		<div class='col-lg-5 col-md-5 col-sm-5 col-xs-12'>
 			<div class='fondeador'>
 				<div class="row">
 					<div class="col-lg-4 col-lg-offset-2">
@@ -41,7 +41,7 @@
 	</div>
 	<br>
 	<article class="row panel-body">
-		<div  class=" img_vid col-sm-8">
+		<div  class=" col-sm-8">
 			{%if project.video%}
 			<iframe id="vidPrev" width="100%" height="520" src="{{project.video}}" frameborder="0" allowfullscreen></iframe>
 			{%else%}
@@ -68,144 +68,165 @@
 					<span>De la meta de ${{project.goal}}</span>
 					<div class="progress">
 						<div class="progress-bar" style="width: 90%;"></div>
+					</div>
+				</div>
+			</div>
+			<div class=" fechas">
+				<h4 class="text-success" style="margin:0">30</h4>
+				<span>Días restantes</span>
+			</div>
+			<br>
+			<div class="cart">
+				<button class="donador btn btn-warning">
+					Patrocinar este proyecto
+				</button>
+			</div>
+			<div class='icon_social'>
+				<div class="social panel-body">
+					<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Comparte en Facebook">
+						<span class="fui-facebook"></span>
+					</div>
+					<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Comparte en Twitter">
+						<span class="fui-twitter"></span>
+					</div>
+					<div class="icon" data-togle="tooltip" data-placement="bottom" title="Comparte en Pinterest">
+						<span class="fui-pinterest"></span>
+					</div>
+					<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Copia el link">
+						<span class="fui-link"></span>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class=" fechas">
-			<h4 class="text-success" style="margin:0">30</h4>
-			<span>Días restantes</span>
-		</div>
-		<br>
-		<div class="cart">
-			<button class="donador btn btn-warning">
-				Patrocinar este proyecto
-			</button>
-		</div>
-		<div class='icon_social'>
-			<div class="social panel-body">
-				<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Comparte en Facebook">
-					<span class="fui-facebook"></span>
-				
-			</div>
-			<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Comparte en Twitter">
-				<span class="fui-twitter"></span>
-			</div>
-			<div class="icon" data-togle="tooltip" data-placement="bottom" title="Comparte en Pinterest">
-				<span class="fui-pinterest"></span>
-			</div>
-			<div class="icon" data-toggle="tooltip" data-placement="bottom" title="Copia el link">
-				<span class="fui-link"></span>
-			</div>
-		</div></div>
 	</article> <!-- row-->
 </section>
 <br>
 <section class="acerca contenedor">
 	<div class='row'>
-			<div class='col-md-8 well'>
+		<div class='col-lg-8 col-md-8 col-sm-8 col-xs-12 well'>
 				  <!-- Nav tabs -->
-				  <ul class="nav nav-tabs" role="tablist">
-				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descripción</a></li>
-				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Actualizaciones</a></li>
-				   
-				    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Como puedo ser accionista?</a></li>
-				  	 <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Comentarios</a></li>
-
-				  </ul>
-
-				  <!-- Tab panes -->
-				  <div class="tab-content">
-				    <div role="tabpanel" class="tab-pane active" id="home">
-				    	<article class="row">
-							<div class="descripcion panel">
-								{%autoescape off%}{{project.desc}}{%endautoescape%}
-							</div>					
-						</article>
-				    </div>
-				    <div role="tabpanel" class="tab-pane" id="profile">
-				    	<div class='panel space'>
-
-				    		<div class='row'>
-				    			<div class='col-lg-2 col-md-2 col-sm-4 col-xs-4 date_act vertical-center'>
-				    				<span>15/02/2017</span>
-				    			</div>
-				    			<div class='col-lg-10 col-md-8 col-sm-8 col-xs-8 border_cuer detail_act '>
-				    				<div class='detail_collapse'>
-				    				<h6 class='detail_header'>Ya tenemos pagina web!<a data-target='actualizar' href="#!"><i class="fa fa-arrow-down" aria-hidden="true"></i>	</a>
-				    				</h6>
-				    				<p id='actualizar' class='detail_cuerpo'>A partir de estudios de mercado, hemos cambiado la sede de la escuela de hackers a la ciudad de Guadalaja, Jalisco. Los costos para la realización del proyecto se mantienen constantes, por lo que con el fondeo podremos llegar a la meta.</p>
-				    				</div>
-				    			</div>
-				    		</div>
-				    		
-				    	</div>
-				    </div> 
-
-				    <div role="tabpanel" class="tab-pane" id="settings">
-				    	<div class='panel'>
-				    		<div class='row'>
-				    			<div class='col-lg-12'>
-				    				<div class='acciones_1 row'>
-				    					<div class='inversion col-lg-4'>
-				    						<p>20%</p>
-				    					</div>
-				    					<div class='col-lg-8'>
-				    						<p>Con una aportacion de $3,000.00 puedes convertirte en accionario de la escuela de HACKERS</p>
-				    					</div>
-				    				</div>
-				    			</div>
-				    			<div class='col-lg-12'>
-				    				
-				    			</div>
-				    		</div>
-				    	</div>
-				    </div>
-				    <div role="tabpanel" class="tab-pane" id="messages">
-				    	<div id="fb-root"></div>
-
-				
-
-					<div class="fb-comments" data-href="http://zapopan.fixter.org/{{request.path}}" data-width="100%" data-numposts="5"></div>
-			</div>
-				    </div>
-				   
-				   <div role="tabpanel" class="tab-pane" id="accionista">...</div>
- 		 			</div> 
- 		 	</div>
-
-		
-			<div class='col-md-4'>
-				<div class='well_s ing_number'>
-						<h4>Contribución libre</h4>
-						<input type="number" placeholder="mxn" name=""><span>Mxn</span>
-						<button class="btn_contribuir btn btn-danger">
-					Contribuir
-			</button>
-			{%for r in project.rewards.all%}
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descripción</a>
+				</li>
+				<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Actualizaciones</a>
+				</li>
+				<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Como puedo ser accionista?</a>
+				</li>
+				 <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Comentarios</a>
+				</li>
+			</ul>
+				<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="home">
+				    <article class="row">
+						<div class="descripcion panel">
+							{%autoescape off%}{{project.desc}}{%endautoescape%}
+						</div>					
+					</article>
 				</div>
-				<div class="well_s ">
-			<!-- 	<div class='cubierta'></div> -->
-
-					<div class='detail_reward'>
-						<div class='text_rew'>
-							<div class='rew'>
-								<p>Contribuir: ${{r.price}}MXN</p>
+				<div role="tabpanel" class="tab-pane" id="profile">
+				   <div class='panel space'>
+				   	{%for a in project.updates.all%}
+				    	<div class='row'>
+				    		<div class='col-lg-2 col-md-3 col-sm-4 col-xs-4 date_act vertical-center'>
+				    			<span>hace {{a.created|timesince}}</span>
+				    		</div>
+				    		<div class='col-lg-10 col-md-9 col-sm-8 col-xs-8 border_cuer detail_act '>
+				    			<div class='detail_collapse'>
+				    				<h6 class='detail_header'>
+				    					{{a.title}}
+				    					<a data-target='{{a.id}}' href="#!"><i class="fa fa-arrow-down" aria-hidden="true"></i>	</a>
+				    				</h6>
+				    				<p id='{{a.id}}' class='detail_cuerpo'>{{a.body}}
+				    				</p>
+				    			</div>
+				    		</div>
+				    	</div>
+				    	{%empty%}
+				    		<div class="perro col-sm-8 centrado">
+							 <a href="#!" class="list-group-item list-group-item-danger">aún no tienes actualizaciones</a>
 							</div>
+			    		{%endfor%}
+				    </div>
+				</div> 
+				<div role="tabpanel" class="tab-pane" id="settings">
+				    <div class='panel'>
+				    	<div class='row'>
+				    		<div class='col-lg-12  col-md-12 col-sm-12 col-xs-12 dotted'>
+				    			<div class='acciones_1 row'>
+				    				<div class='inversion col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+				    					<img class='img_accion img-responsive' src="/static/images/10-01.png">
+				    				</div>
+				    				<div class='col-lg-8 col-md-8 col-sm-6 col-xs-12 desc_accion'>
+				    					<p>10% de Escuela de Hackers</p>
+				    					<p>Con una aportacion de $6,000.00 puedes convertirte en accionario de la escuela de HACKERS, adquiriendo automaticamente el 10%, la cual segun las proyecciones tendras </p>
+				    				</div>
+				    			</div>
+				    		</div>
+				    		<div class='col-lg-12  col-md-12 col-sm-12 col-xs-12  dotted'>
+				    			<div class='acciones_1 row'>
+				    				<div class='inversion col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+				    					<img class='img_accion img-responsive' src="/static/images/20-01.png">
+				    				</div>
+				    				<div class='col-lg-8 col-md-8 col-sm-6 col-xs-12 desc_accion'>
+				    					<p>20% de Escuela de Hackers</p>
+				    					<p>Con una aportacion de $12,000.00 puedes convertirte en accionario de la escuela de HACKERS, adquiriendo automaticamente el 20%, la cual segun las proyecciones tendras </p>
+				    				</div>
+				    			</div>
+				    		</div>
+				    		<div class='col-lg-12  col-md-12 col-sm-12 col-xs-12  dotted'>
+				    			<div class='acciones_1 row'>
+				    				<div class='inversion col-lg-4 col-md-4 col-sm-6 col-xs-12'>
+				    					<img class='img_accion' src="/static/images/50-01.png">
+				    				</div>
+				    				<div class='col-lg-8 col-md-8 col-sm-6 col-xs-12  desc_accion'>
+				    					<p>50% de Escuela de Hackers</p>
+				    					<p>Con una aportacion de $30,000.00 puedes convertirte en accionario de la escuela de HACKERS, adquiriendo automaticamente el 50%, la cual segun las proyecciones tendras </p>
+				    				</div>
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class='cita'>
+				    		<button class='btn_cita'>Agenda una cita</button>
+				    	</div>
+				    </div>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="messages">
+					<div id="fb-root"></div>
+					<div class="fb-comments" data-href="http://zapopan.fixter.org/{{request.path}}" data-width="100%" data-numposts="5"></div>
+				</div>
+			</div>
+		</div> 
+	<!-- 	Recompensa -->
+		<div class=' col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+			<div class='well_s ing_number'>
+				<h4>Contribución libre</h4>
+				<input type="number" placeholder="mxn" name=""><span>Mxn</span>
+				<button class="btn_contribuir btn btn-danger">
+					Contribuir
+				</button>
+				{%for r in project.rewards.all%}
+			</div>
+			<div class="well_s ">
+				<div class='detail_reward'>
+					<div class='text_rew'>
+						<div class='rew'>
+							<p>Contribuir: ${{r.price}}MXN</p>
 						</div>
 					</div>
-					<div class='reward'>
-						<h5>{{r.title}}</h5>
-						<p>{{r.desc}}</p>
-						<span class="dineros">Fecha aproximada de entrega: <span class="text-info">{{r.deliver_date|date:"M, Y"}}</span></span>
-						<br>
-						<span class="dineros">608 <span class="text-info">Adquiridos</span></span>
-						<div class="selected btn_rew btn-danger">Obtener esta recompensa</div>
-					</div>
 				</div>
+				<div class='reward'>
+					<h5>{{r.title}}</h5>
+					<p>{{r.desc}}</p>
+					<span class="dineros">Fecha aproximada de entrega: <span class="text-info">{{r.deliver_date|date:"M, Y"}}</span></span>
+					<br>
+					<span class="dineros">608 <span class="text-info">Adquiridos</span></span>
+					<div class="selected btn_rew btn-danger">Obtener esta recompensa</div>
+				</div>
+			</div>
 				{%endfor%}
-			</div> <!--row-->		
+		</div> <!--row-->		
 	</div>
-
 </section>
 
 

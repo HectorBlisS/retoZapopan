@@ -1,0 +1,69 @@
+@import url("_dashboard.55efe43aaf2e.css");
+@import url("_projects.25ce8d2b75ff.css");
+@import url("_index.fa26cddaa89f.css");
+@import url("_manager.d41d8cd98f00.css");
+@import url("_acciones.4925415a514e.css");
+@import url("_detail.49fc77c0e7b5.css");
+
+
+body{
+	background: #eceff1;
+}
+li.success{
+	width: 100%;
+	background: lightgreen;
+	color:white;
+	text-align: center;
+	list-style: none;
+}
+
+li.error{
+	width: 100%;
+	background: red;
+	color:white;
+}
+
+.carga{
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+
+  background: url(https://s3.eu-central-1.amazonaws.com/cloudpro/sas-smart.com/images/loading.gif) center no-repeat #fff;
+
+}
+.noti{
+	position: relative;
+}
+.notify{
+	position: absolute;
+	top: 55px;
+	background: white;
+	display: block;
+	z-index: 1;
+	left: -200px;
+	width: 400px;
+}
+.notify ul{
+	list-style: none;
+	padding: 10px 20px 10px 20px;
+	
+}
+.notify ul li:hover{
+	background: rgba(0,0,0,0.2);
+}
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  position: absolute;
+  top: -5px;
+  left: 56%;
+  border-bottom: 5px solid white;
+}
+
+

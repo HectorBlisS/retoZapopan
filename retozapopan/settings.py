@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'muro',
     'actions',
     'actualizaciones',
+    'mailing',
 
 ]
 
@@ -177,7 +178,7 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL="dash:dash"
 #     'social.pipeline.social_auth.social_user',
 #     'social.pipeline.user.get_username',
 #     'social.pipeline.user.create_user',
-#     # 'usuarios.pipelines.save_profile_picture',  # <--- set the import-path to the function
+#     'accounts.pipelines.save_profile_picture',  # <--- set the import-path to the function
 #     'social.pipeline.social_auth.associate_user',
 #     'social.pipeline.social_auth.load_extra_data',
 #     'social.pipeline.user.user_details'
@@ -220,3 +221,16 @@ ABSOLUTE_URL_OVERRIDES = {
     'auth.user':lambda u:reverse_lazy('user_detail', args=[u.username])
 }
 
+
+# Correo electronico
+EMAIL_HOST = 'p3plcpnl0061.prod.phx3.secureserver.net'
+# EMAIL_HOST='smtp.gmail.com'
+# EMAIL_PORT = '587'
+EMAIL_PORT='465'
+EMAIL_HOST_USER = 'admin@fixter.org'
+# EMAIL_HOST_USER = 'tterrenofacil@gmail.com'
+EMAIL_HOST_PASSWORD = 'Poweroso77'
+# EMAIL_HOST_PASSWORD = 'Miguel741010'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL=False
