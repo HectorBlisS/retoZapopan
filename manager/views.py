@@ -7,62 +7,57 @@ from django.core.urlresolvers import reverse_lazy
 from .forms import ManagerForm
 from django.contrib import messages
 
+
 # Create your views here.
 class ManageView(View):
-	
-	def get(self, request, cat=None, status=None):
-		template_name = 'manager/list.html'
-		cats = Tag.objects.all()
+    def get(self, request, cat=None, status=None):
+        template_name = 'manager/list.html'
+        if cat:
+            tag = get_object_or_404(Tag, slug=cat)
+        cats = Tag.objects.all()
 
+        if status:
+            projects = Project.objects.all().filter(status=status)
+        elif cat:
+            projects = Project.objects.all().filter(tags__name__in=[tag])
+        else:
+            projects = Project.objects.all()
 
-		if status:
-			projects = Project.objects.all().filter(status=status)	
-		elif cat:
-			projects = Project.objects.all().filter(tags__name__in=[cat])
-		else:
-			projects = Project.objects.all()
-		
+        context = {
+            'projects': projects,
+            'cats': cats
+        }
 
-		context={
-		'projects': projects,
-		'cats':cats
-		}
-
-		return render(request, template_name, context)
+        return render(request, template_name, context)
 
 
 class ManageDetail(View):
+    def get(self, request, pk):
+        template_name = "manager/detail.html"
+        project = get_object_or_404(Project, id=pk)
+        context = {
+            'project': project
+        }
 
-	def get(self, request, pk):
-		template_name = "manager/detail.html"
-		project = get_object_or_404(Project, id=pk)
-		context = {
-		'project': project
-		}
+        return render(request, template_name, context)
 
-		return render(request, template_name, context)
+    def post(self, request, pk):
+        template_name = "manager/detail.html"
+        p = get_object_or_404(Project, id=pk)
+        data = request.POST
+        form = ManagerForm(data, instance=p)
+        print(form)
+        # print(form)
 
-	def post(self, request, pk):
-		template_name = "manager/detail.html"
-		p = get_object_or_404(Project, id=pk)
-		data = request.POST
-		form = ManagerForm(data, instance=p)
-		print(form)
-		# print(form)
+        if form.is_valid():
+            form.save()
+            print('PASO Y GUARDO')
+            messages.success(request, "Proyecto guardado con éxito")
+        else:
+            print('No es Valido')
+            messages.error(request, "El proyecto no se guardó")
 
-		if form.is_valid():
-			form.save()
-			print('PASO Y GUARDO')
-			messages.success(request, "Proyecto guardado con éxito")
-		else:
-			print('No es Valido')
-			messages.error(request, "El proyecto no se guardó")
-
-		context = {
-			'project':p
-		}
-		return render(request, template_name,context)
-
-
-
-
+        context = {
+            'project': p
+        }
+        return render(request, template_name, context)
